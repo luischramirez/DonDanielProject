@@ -13,7 +13,7 @@ from django.db import models
 
 
 class Acudiente(models.Model):
-    id = models.IntegerField(primary_key=True)
+    
     nombre = models.TextField()
     direccion = models.TextField()
     telefono = models.TextField()
@@ -26,7 +26,6 @@ class Acudiente(models.Model):
 
 
 class Alimentacion(models.Model):
-    id = models.IntegerField(primary_key=True)
     unidad_medida = models.ForeignKey('UnidadMedida', models.DO_NOTHING, db_column='unidad_medida')
     fecha = models.DateField()
 
@@ -36,7 +35,6 @@ class Alimentacion(models.Model):
 
 
 class Color(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -45,7 +43,6 @@ class Color(models.Model):
 
 
 class Dia(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -54,7 +51,6 @@ class Dia(models.Model):
 
 
 class Dieta(models.Model):
-    id = models.IntegerField(primary_key=True)
     tipo_dieta = models.ForeignKey('TipoDieta', models.DO_NOTHING, db_column='tipo_dieta')
 
     class Meta:
@@ -63,7 +59,6 @@ class Dieta(models.Model):
 
 
 class Ejercicio(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
     descripcion = models.TextField()
 
@@ -73,7 +68,6 @@ class Ejercicio(models.Model):
 
 
 class EjercicioIntermedio(models.Model):
-    id = models.IntegerField(primary_key=True)
     id_ejercicio = models.ForeignKey(Ejercicio, models.DO_NOTHING, db_column='id_ejercicio')
     id_nivel_entrenamiento = models.ForeignKey('NivelEntrenamiento', models.DO_NOTHING, db_column='id_nivel_entrenamiento')
     tiempo_entrenamiento = models.IntegerField()
@@ -84,7 +78,6 @@ class EjercicioIntermedio(models.Model):
 
 
 class EstadoPerruno(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -93,7 +86,6 @@ class EstadoPerruno(models.Model):
 
 
 class HorarioDieta(models.Model):
-    id = models.IntegerField(primary_key=True)
     id_dieta = models.ForeignKey(Dieta, models.DO_NOTHING, db_column='id_dieta', blank=True, null=True)
     id_alimentacion = models.ForeignKey(Alimentacion, models.DO_NOTHING, db_column='id_alimentacion')
     id_dia = models.ForeignKey(Dia, models.DO_NOTHING, db_column='id_dia')
@@ -105,7 +97,6 @@ class HorarioDieta(models.Model):
 
 
 class Madre(models.Model):
-    id = models.IntegerField(primary_key=True)
     id_raza = models.ForeignKey('Raza', models.DO_NOTHING, db_column='id_raza')
     id_color = models.ForeignKey(Color, models.DO_NOTHING, db_column='id_color')
     nombre = models.TextField()
@@ -117,7 +108,6 @@ class Madre(models.Model):
 
 
 class NivelEntrenamiento(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -126,7 +116,6 @@ class NivelEntrenamiento(models.Model):
 
 
 class Padre(models.Model):
-    id = models.IntegerField(primary_key=True)
     id_raza = models.ForeignKey('Raza', models.DO_NOTHING, db_column='id_raza')
     id_color = models.ForeignKey(Color, models.DO_NOTHING, db_column='id_color')
     nombre = models.TextField()
@@ -138,7 +127,6 @@ class Padre(models.Model):
 
 
 class ProductoAseo(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -146,7 +134,6 @@ class ProductoAseo(models.Model):
         db_table = 'Producto_aseo'
 
 class Suplemento(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
     marca = models.IntegerField()
 
@@ -156,7 +143,6 @@ class Suplemento(models.Model):
 
 
 class Perro(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField(blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
     edad = models.IntegerField(blank=True, null=True)
@@ -186,7 +172,6 @@ class Perro(models.Model):
 
 
 class Raza(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -195,7 +180,6 @@ class Raza(models.Model):
 
 
 class Reserva(models.Model):
-    id = models.IntegerField(primary_key=True)
     tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
     fecha = models.DateField()
 
@@ -205,7 +189,6 @@ class Reserva(models.Model):
 
 
 class ReservaIntermedia(models.Model):
-    id = models.IntegerField(primary_key=True)
     id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
     id_reserva = models.ForeignKey(Reserva, models.DO_NOTHING, db_column='id_reserva', blank=True, null=True)
     precio_aproximado = models.IntegerField(blank=True, null=True)
@@ -216,7 +199,6 @@ class ReservaIntermedia(models.Model):
 
 
 class Tamanio(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -225,7 +207,6 @@ class Tamanio(models.Model):
 
 
 class TipoDieta(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -234,7 +215,6 @@ class TipoDieta(models.Model):
 
 
 class TipoReserva(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -243,7 +223,6 @@ class TipoReserva(models.Model):
 
 
 class TipoServicio(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -252,7 +231,6 @@ class TipoServicio(models.Model):
 
 
 class TipoServicioPerro(models.Model):
-    id = models.IntegerField(primary_key=True)
     fecha_entrada = models.DateField(blank=True, null=True)
     tiempo_estadia = models.DateField(blank=True, null=True)
     fecha_salida = models.DateField(blank=True, null=True)
@@ -266,7 +244,6 @@ class TipoServicioPerro(models.Model):
 
 
 class UnidadMedida(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -275,7 +252,6 @@ class UnidadMedida(models.Model):
 
 
 class Vacuna(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
 
     class Meta:
@@ -284,7 +260,6 @@ class Vacuna(models.Model):
 
 
 class VacunaPerro(models.Model):
-    id = models.IntegerField(primary_key=True)
     id_vacuna = models.ForeignKey(Vacuna, models.DO_NOTHING, db_column='id_vacuna', blank=True, null=True)
     id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
@@ -296,7 +271,6 @@ class VacunaPerro(models.Model):
 
 
 class Veterinario(models.Model):
-    id = models.IntegerField(primary_key=True)
     nombre = models.TextField()
     telefono = models.TextField()
     direccion = models.TextField()
