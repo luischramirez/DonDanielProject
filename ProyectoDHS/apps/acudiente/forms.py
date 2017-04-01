@@ -1,6 +1,5 @@
 from django import forms
 from apps.acudiente.models import Acudiente
-
 class FormularioAcudiente(forms.ModelForm):
     """
         Clase encargada de describir el formulario para gestionar los acudientes
@@ -23,10 +22,10 @@ class FormularioAcudiente(forms.ModelForm):
             'alias':'Alias',
         }
         widgets = {
-            'nombre': forms.TextInput(attrs={'class':'form-control'}),
-            'direccion': forms.TextInput(attrs={'class':'form-control'}),
-            'telefono': forms.TextInput(attrs={'class':'form-control'}),
-            'email': forms.TextInput(attrs={'class':'form-control'}),
-            'alias': forms.TextInput(attrs={'class':'form-control'}),
+            'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre'}),
+            'direccion': forms.TextInput(attrs={'class':'form-control', 'id':'dir'}),
+            'telefono': forms.TextInput(attrs={'class':'form-control', 'id':'tel'}),
+            'email': forms.TextInput(attrs={'class':'form-control', 'id':'correo'}),
+            'alias': forms.TextInput(attrs={'class':'form-control', 'id':'apodo'}),
         }
 
