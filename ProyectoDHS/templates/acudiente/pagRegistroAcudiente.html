@@ -1,0 +1,12 @@
+{% extends 'base/base.html'%}
+
+{% block content %} 
+<form>
+        <!-- token de seguridad obligatorio-->
+		<!-- se pinte el formulario como parrafo-->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrar</button>
+</form>
+{% endblock %}
+

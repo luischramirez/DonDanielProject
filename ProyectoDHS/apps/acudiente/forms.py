@@ -24,9 +24,9 @@ class FormularioAcudiente(forms.ModelForm):
         }
         widgets = {
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
-            'direccion': forms.TextInput(attrs={'class':''}),
-            'telefono': forms.TextInput(attrs={'class':''}),
-            'email': forms.TextInput(attrs={'class':''}),
-            'alias': forms.TextInput(attrs={'class':''}),
+            'direccion': forms.TextInput(attrs={'class':'form-control'}),
+            'telefono': forms.TextInput(attrs={'class':'form-control'}),
+            'email': forms.TextInput(attrs={'class':'form-control'}),
+            'alias': forms.TextInput(attrs={'class':'form-control'}),
         }
 

@@ -1,4 +1,5 @@
 from apps.acudiente.models import Acudiente
+from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 from apps.acudiente.forms import FormularioAcudiente
 # Create your views here.
@@ -12,9 +13,9 @@ class RegistrarAcudiente(CreateView):
     #se indica que formulario va a dar soporte a la acción de registro
     form_class = FormularioAcudiente
     #se indica que template va a gestionar el registro
-    #template_name =
+    template_name = 'acudiente/pagRegistroAcudiente.html'
     #se indica cual será la url de finalización
-    #success_url=reverse_lazy(namespace)
+    success_url=reverse_lazy('acudiente:listar_acudiente')
 
 class ActualizarInformacionAcudiente(UpdateView):
     """
@@ -27,7 +28,7 @@ class ActualizarInformacionAcudiente(UpdateView):
     #se indica que template va a gestionar el registro
     #template_name =
     #se indica cual será la url de finalización
-    #success_url=reverse_lazy(namespace)
+    success_url=reverse_lazy('acudiente:listar_acudiente')
 
 class EliminarAcudiente(DeleteView):
     """
@@ -38,7 +39,7 @@ class EliminarAcudiente(DeleteView):
     #se indica que template va a gestionar el borrado
     #template_name =
     #se indica cual será la url de finalización
-    #success_url=reverse_lazy(namespace)
+    success_url=reverse_lazy('acudiente:listar_acudiente')
 
 class ListarAcudiente(ListView):
     """
@@ -48,5 +49,3 @@ class ListarAcudiente(ListView):
     model = Acudiente
     #se indica que template va a gestionar el listador de los acudientes
     #template_name =
-    #se indica cual será la url de finalización
-    #success_url=reverse_lazy(namespace)
