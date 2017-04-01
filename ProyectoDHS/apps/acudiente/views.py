@@ -1,5 +1,6 @@
 from apps.acudiente.models import Acudiente
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
+from apps.acudiente.forms import FormularioAcudiente
 # Create your views here.
 
 class RegistrarAcudiente(CreateView):
@@ -9,7 +10,7 @@ class RegistrarAcudiente(CreateView):
     #se ingresa qué modelo se utilizará para el registro
     model = Acudiente
     #se indica que formulario va a dar soporte a la acción de registro
-    #form_class = 
+    form_class = FormularioAcudiente
     #se indica que template va a gestionar el registro
     #template_name =
     #se indica cual será la url de finalización
@@ -22,7 +23,7 @@ class ActualizarInformacionAcudiente(UpdateView):
     #se ingresa qué modelo se utilizará para la actualización de la información
     model = Acudiente
     #se indica que formulario va a dar soporte a la acción de actualización de la información
-    #form_class = 
+    form_class = FormularioAcudiente 
     #se indica que template va a gestionar el registro
     #template_name =
     #se indica cual será la url de finalización
