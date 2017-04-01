@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from apps.acudiente.views import RegistrarAcudiente, ActualizarInformacionAcudiente, EliminarAcudiente,ListarAcudiente
-
+from apps.acudiente.views import RegistrarAcudiente, ActualizarInformacionAcudiente, EliminarAcudiente, ListarAcudiente
+  
 urlpatterns = [
     url(r'^registrar$',RegistrarAcudiente.as_view(), name='registrar_acudiente'),
     url(r'^actualizar/(?P<pk>\d+)/$',ActualizarInformacionAcudiente.as_view(), name='actualizar_acudiente'),

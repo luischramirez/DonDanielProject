@@ -48,4 +48,4 @@ class ListarAcudiente(ListView):
     #se ingresa qué modelo se utilizará para listar los acudientes
     model = Acudiente
     #se indica que template va a gestionar el listador de los acudientes
-    #template_name =
+    template_name = 'acudiente/pagListaAcudiente.html'
