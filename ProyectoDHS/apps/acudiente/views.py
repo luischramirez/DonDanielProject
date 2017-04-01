@@ -15,7 +15,7 @@ class RegistrarAcudiente(CreateView):
     #se indica que template va a gestionar el registro
     template_name = 'acudiente/pagRegistroAcudiente.html'
     #se indica cual será la url de finalización
-    success_url=reverse_lazy('acudiente:listar_acudiente')
+    success_url= reverse_lazy('acudiente:listar_acudiente')
 
 class ActualizarInformacionAcudiente(UpdateView):
     """
@@ -28,7 +28,7 @@ class ActualizarInformacionAcudiente(UpdateView):
     #se indica que template va a gestionar el registro
     #template_name =
     #se indica cual será la url de finalización
-    success_url=reverse_lazy('acudiente:listar_acudiente')
+    success_url= reverse_lazy('acudiente:listar_acudiente')
 
 class EliminarAcudiente(DeleteView):
     """
