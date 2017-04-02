@@ -15,7 +15,7 @@ class FormularioAcudiente(forms.ModelForm):
             'alias',
         ]
         labels = {
-            'nombre': 'Nombre del acudiente',
+            'nombre': 'Nombre completo del acudiente',
             'direccion': 'Dirección',
             'telefono': 'Teléfono',
             'email':'E-Mail',
