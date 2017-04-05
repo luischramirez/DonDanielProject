@@ -152,17 +152,6 @@ class Padre(models.Model):
         managed = False
         db_table = 'Padre'
 
-
-class ProductoAseo(models.Model):
-    """
-    Clase encargada de representar el producto de aseo que se le aplica a un perro 
-    """
-    nombre = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'Producto_aseo'
-
 class Suplemento(models.Model):
     """
     Clase encargada de representar el suplemento que se le da a un perro 
@@ -199,7 +188,6 @@ class Perro(models.Model):
     id_estado_perruno = models.ForeignKey(EstadoPerruno, models.DO_NOTHING, db_column='id_estado_perruno', blank=True, null=True)
     id_acudiente = models.ForeignKey(Acudiente, models.DO_NOTHING, db_column='id_acudiente', blank=True, null=True)
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio', blank=True, null=True)
-    producto_aseo = models.ManyToManyField(ProductoAseo)
     suplemento = models.ManyToManyField(Suplemento)
 
     class Meta:

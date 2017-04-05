@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^main/',include('apps.main.urls',namespace='main')),
     url(r'^admin/', admin.site.urls),
     url(r'^acudiente/', include('apps.acudiente.urls', namespace = 'acudiente')),
+    url(r'^perro/',include('apps.perro.urls', namespace='perro')),
 ]
