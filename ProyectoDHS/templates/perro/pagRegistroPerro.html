@@ -1,4 +1,10 @@
 {% extends 'base/base.html'%}
+{% block css%}
+<link rel="stylesheet" type="text/css" href="/media/admin/css/forms.css"/>
+<link rel="stylesheet" type="text/css" href="/media/admin/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="/media/admin/css/global.css"/>
+<link rel="stylesheet" type="text/css" href="/media/admin/css/widgets.css"/>
+{% endblock%}
 {% block tipo_accion %}Registro de perros{% endblock %}
 {% block content %} 
 <form method='POST'>
@@ -8,4 +14,9 @@
         {{ form.as_p }}
         <button type="submit" id="boton"> Registrar </button>
 </form>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/my_admin/jsi18n/"></script>
+<script type="text/javascript" src="/media/admin/js/core.js"></script>
+<script type="text/javascript" src="/media/admin/js/admin/RelatedObjectLookups.js"></script>
 {% endblock %}

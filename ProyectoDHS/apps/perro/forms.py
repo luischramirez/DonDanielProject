@@ -5,6 +5,8 @@ class FormularioPerro(forms.ModelForm):
     """
         Clase encargada de describir el formulario para gestionar los perros
     """
+    
+
     class Meta:
         model = Perro
 
@@ -57,13 +59,13 @@ class FormularioPerro(forms.ModelForm):
 
         widgets = { 
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre'}),
-            'fecha_nacimiento': forms.TextInput(attrs={'class':'form-control', 'id':'fecha_nacimiento'}),
+            'fecha_nacimiento': forms.DateInput(attrs={'class':'form-control', 'id':'fecha_nacimiento'}),
             'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
-            #'peso': forms.IntegerField(attrs={'class':'form-control', 'id':'peso'}),
-            'sexo': forms.ChoiceField(widget=forms.RadioSelect ,choices=(('1', 'First'), ('2', 'Second'))),
+            'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso'}),
+            'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H'}),
             'estado_salud': forms.TextInput(attrs={'class':'form-control', 'id':'estado_salud'}),
-            'fecha_desparacitacion': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
-            #'epoca_celo_aproximada': forms.DateField(attrs={'class':'form-control', 'id':'estado_salud'}),
+            'fecha_desparacitacion': forms.TextInput(attrs={'class':'form-control', 'id':'fecha_desparacitacion'}),
+            'epoca_celo_aproximada': forms.DateTimeInput(attrs={'class':'form-control', 'id':'estado_salud'}),
             'epoca_celo_real': forms.DateInput(attrs={'class':'form-control', 'id':'estado_salud'}),
             'condiciones_prestamo': forms.TextInput(attrs={'class':'form-control', 'id':'condiciones_prestamo'}),
             'id_color': forms.TextInput(attrs={'class':'form-control', 'id':'color'}),
