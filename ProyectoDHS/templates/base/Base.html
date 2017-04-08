@@ -13,6 +13,8 @@
 	<link rel="icon" type="image/png" href="{% static 'img/icons/icon.PNG'%}" />
 	<title>Centro canino de servicios integrales DHS</title>
 
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
@@ -136,6 +138,15 @@
         <!-- Javascripts -->
         <script src="{% static 'js/jquery-1.9.1.min.js'%}"></script>
         <script src="{% static 'js/bootstrap.min.js'%}"></script>
+		<script>
+			$(function () {
+				$( ".datepicker" ).datepicker({
+					changeMonth: true,
+					changeYear: true,
+					yearRange: "1900:2020",
+				});
+			});
+			</script>
 		{% block js %}  
 		
 		{% endblock %}
