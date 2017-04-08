@@ -17,7 +17,7 @@ class FormularioPerro(forms.ModelForm):
             'sexo',
             'peso',
             'estado_salud',
-            'fecha_desparacitacion',
+            'fecha_desparasitacion',
             'epoca_celo_aproximada',
             'epoca_celo_real',
             'condiciones_prestamo',
@@ -40,7 +40,7 @@ class FormularioPerro(forms.ModelForm):
             'sexo': 'Sexo',
             'peso': 'Peso',
             'estado_salud': 'Estado de salud',
-            'fecha_desparacitacion': 'Fecha de desparasitación',
+            'fecha_desparasitacion': 'Fecha de desparasitación',
             'epoca_celo_aproximada': 'Época de celo aproximada',
             'epoca_celo_real': 'Época de celo real',
             'condiciones_prestamo': 'Condiciones de préstamo',
@@ -56,13 +56,14 @@ class FormularioPerro(forms.ModelForm):
             'id_tamanio': 'Tamaño',
             'suplemento': 'Suplementos',
         }
-#'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
+
         widgets = { 
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
             'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en gramos'}),
             'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H'}),
+            'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
             'estado_salud': forms.TextInput(attrs={'class':'form-control', 'id':'estado_salud','placeholder':'Condiciones en las que se recibe al canino'}),
             'epoca_celo_aproximada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox'}),
             'epoca_celo_real': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_real'}),

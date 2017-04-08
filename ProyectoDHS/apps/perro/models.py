@@ -174,7 +174,7 @@ class Perro(models.Model):
     sexo = models.CharField(max_length=1, blank=True, null=True)
     peso = models.IntegerField(blank=True, null=True)
     estado_salud = models.TextField(blank=True, null=True)
-    fecha_desparacitacion = models.DateField(blank=True, null=True)
+    fecha_desparasitacion = models.DateField(blank=True, null=True)
     epoca_celo_aproximada = models.DateField(blank=True, null=True)
     epoca_celo_real = models.DateField(blank=True, null=True)
     condiciones_prestamo = models.TextField(blank=True, null=True)

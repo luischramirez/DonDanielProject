@@ -14,15 +14,17 @@ class FormularioAcudiente(forms.ModelForm):
             'email',
             'alias',
         ]
+        
         labels = {
-            'nombre': 'Nombre completo del acudiente',
+            'nombre': 'Nombre completo del acudiente',    
             'direccion': 'Dirección',
             'telefono': 'Teléfono',
             'email':'E-Mail',
             'alias':'Alias',
         }
+        
         widgets = {
-            'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre'}),
+            'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre'}),    
             'direccion': forms.TextInput(attrs={'class':'form-control', 'id':'dir'}),
             'telefono': forms.TextInput(attrs={'class':'form-control', 'id':'tel'}),
             'email': forms.TextInput(attrs={'class':'form-control', 'id':'correo'}),
