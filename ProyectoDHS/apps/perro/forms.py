@@ -1,7 +1,6 @@
 from django import forms
 from apps.perro.models import Perro
-#from datetimewidget.widgets import DateWidget
-#from django.contrib.admin.widgets import AdminDateWidget
+
 
 class FormularioPerro(forms.ModelForm):
     """
@@ -57,17 +56,16 @@ class FormularioPerro(forms.ModelForm):
             'id_tamanio': 'Tamaño',
             'suplemento': 'Suplementos',
         }
-
+#'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
         widgets = { 
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
-            'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker'}),
+            'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
             'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en gramos'}),
             'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H'}),
             'estado_salud': forms.TextInput(attrs={'class':'form-control', 'id':'estado_salud','placeholder':'Condiciones en las que se recibe al canino'}),
-            'fecha_desparacitacion': forms.TextInput(attrs={'class':'form-control', 'id':'fecha_desparacitacion'}),
-            'epoca_celo_aproximada': forms.DateInput(attrs={'class':'form-control', 'id':'estado_salud'}),
-            'epoca_celo_real': forms.DateInput(attrs={'class':'form-control', 'id':'estado_salud'}),
+            'epoca_celo_aproximada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox'}),
+            'epoca_celo_real': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_real'}),
             'condiciones_prestamo': forms.TextInput(attrs={'class':'form-control', 'id':'condiciones_prestamo','placeholder':'Condiciones pautadas con el dueño del canino'}),
             'id_color': forms.TextInput(attrs={'class':'form-control', 'id':'color'}),
             'id_raza': forms.TextInput(attrs={'class':'form-control'}),
@@ -81,7 +79,3 @@ class FormularioPerro(forms.ModelForm):
             'id_tamanio': forms.TextInput(attrs={'class':'form-control'}),
             'suplemento': forms.TextInput(attrs={'class':'form-control'}),
         }
-
-#    def __init__(self, *args, **kwargs):
- #           super(FormularioPerro, self).__init__(*args, **kwargs)
-  #          self.fields['fecha_nacimiento'].widget = widgets.AdminDateWidget()
