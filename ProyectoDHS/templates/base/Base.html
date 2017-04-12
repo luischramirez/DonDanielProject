@@ -31,6 +31,7 @@
 </head>
 
     <body>
+		{% block navbar%}
     <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -74,10 +75,12 @@
 							<li><a href="#">Adiestramiento</a></li>
 						</ul>
 					</li>
+					<li class="active"><a href="{% url 'logout' %}">Salir</a></li>
                 </ul>
             </div>
         </div>
-    </header><!--/header-->
+    </header>
+	<!--/header-->
 
         <!-- Page Title -->
 		<div class="section section-breadcrumbs">
@@ -89,12 +92,12 @@
 				</div>
 			</div>
 		</div>
-        
+    {% endblock %}    
         <div>
 			{% block content%}
 			{% endblock %}
 		</div>
-
+	{% block footer %}
 	    <!-- Footer -->
 	    <div class="footer">
 	    	<div class="container">
@@ -134,6 +137,7 @@
 		    	</div>
 		    </div>
 	    </div>
+		{% endblock %}
 
         <!-- Javascripts -->
 		<script src="{% static 'js/jquery-1.12.4.js'%}"></script>
