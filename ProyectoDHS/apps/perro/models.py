@@ -88,19 +88,6 @@ class Ejercicio(models.Model):
         db_table = 'Ejercicio'
 
 
-class EjercicioIntermedio(models.Model):
-    """
-    Clase encargada de representar los ejercicios asociados a un nivel de entrenamiento 
-    """
-    id_ejercicio = models.ForeignKey(Ejercicio, models.DO_NOTHING, db_column='id_ejercicio')
-    id_nivel_entrenamiento = models.ForeignKey('NivelEntrenamiento', models.DO_NOTHING, db_column='id_nivel_entrenamiento')
-    tiempo_entrenamiento = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'Ejercicio_intermedio'
-
-
 class EstadoPerruno(models.Model):
     """
     Clase encargada de representar el estado del perro (reservado, apto para rescate, apto para busqueda) 
@@ -151,6 +138,8 @@ class NivelEntrenamiento(models.Model):
     Clase encargada de representar el nivel de entrenamiento de un perro 
     """
     nombre = models.TextField()
+    tiempo_entrenamiento = models.IntegerField()
+    ejercicios = models.ManyToManyField(Ejercicio)
 
     def __str__(self):
         return self.nombre
