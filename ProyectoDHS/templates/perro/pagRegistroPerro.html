@@ -7,7 +7,7 @@
             <!-- token de seguridad obligatorio-->
             <!-- se pinte el formulario como parrafo-->
             {% csrf_token %}
-            {{ form.as_p }}
+                {{ form.as_p }}
             <button type="submit" id="boton"> Registrar </button>
     </form>
 {% endblock %}
@@ -16,6 +16,12 @@
     
     <script>
         $( function() {
+            $("#nivel").after("<button> <a href='#'> Agregar Nivel de Entrenamiento </a> </button>");
+            $("#veterinario").after("<button> <a href='#'> Agregar Veterinario </a></button>");
+            $("#dieta").after("<button> <a href='#'> Agregar Dieta </a> </button>");
+            $("#padre").after("<button> <a href='#'> Agregar Padre </a> </button>");
+            $("#madre").after("<button> <a href='#'> Agregar Madre </a> </button>");
+            $("#suplemento").after("<button><a href='#'> Agregar Suplemento </a> </button>");
             //se pinta el calendario para cada campo
             $( "#fecha_nacimiento" ).datepicker();
             $( "#fecha_desparasitacion" ).datepicker();
