@@ -1,5 +1,5 @@
 from django import forms
-from apps.perro.models import Perro
+from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento
 
 
 class FormularioPerro(forms.ModelForm):
@@ -84,3 +84,101 @@ class FormularioPerro(forms.ModelForm):
             'vacuna': forms.CheckboxSelectMultiple(),
             
         }
+
+class FormularioVeterinario(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar los veterinarios
+    """
+    class Meta:
+        model = Veterinario
+
+        fields=[
+            'nombre',
+            'telefono',
+            'direccion',
+            'email',
+        ]
+        labels={
+            'nombre':'Nombre',
+            'telefono':'Teléfono',
+            'direccion':'Dirección',
+            'email':'E-Mail',
+        }
+        widgets={
+            'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
+            'telefono':forms.TextInput(attrs={'class':'form-control', 'id':'telefono','placeholder':'Teléfono'}),
+            'direccion':forms.TextInput(attrs={'class':'form-control', 'id':'dirección','placeholder':'Dirección'}),
+            'email':forms.TextInput(attrs={'class':'form-control', 'id':'email','placeholder':'E-Mail'}),
+        }
+
+class FormularioMadre(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar las madres de los perros
+    """
+    class Meta:
+        model = Madre
+
+        fields=[
+            'nombre',
+            'edad',
+            'id_raza',
+            'id_color',
+        ]
+        labels={
+            'nombre':'Nombre',
+            'edad':'Edad',
+            'id_raza':'Raza',
+            'id_color':'Color',
+        }
+        widgets={
+            'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
+            'edad':forms.TextInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Edad'}),
+            'id_raza':forms.Select(attrs={'class':'form-control', 'id':'id_raza'}),
+            'id_color':forms.Select(attrs={'class':'form-control', 'id':'id_color'}),
+        }
+
+class FormularioPadre(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar los padres de los perros
+    """
+    class Meta:
+        model = Padre
+
+        fields=[
+            'nombre',
+            'edad',
+            'id_raza',
+            'id_color',
+        ]
+        labels={
+            'nombre':'Nombre',
+            'edad':'Edad',
+            'id_raza':'Raza',
+            'id_color':'Color',
+        }
+        widgets={
+            'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
+            'edad':forms.TextInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Edad'}),
+            'id_raza':forms.Select(attrs={'class':'form-control', 'id':'id_raza'}),
+            'id_color':forms.Select(attrs={'class':'form-control', 'id':'id_color'}),
+        }
+
+class FormularioSuplemento(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar los suplementos de un perro
+    """
+    class Meta:
+        model = Suplemento
+
+        fields=[
+            'nombre',
+            'marca',
+        ]
+        labels={
+            'nombre':'Nombre',
+            'marca':'Marca',
+        }
+        widgets={
+            'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
+            'marca':forms.TextInput(attrs={'class':'form-control', 'id':'marca','placeholder':'Marca'}),
+            }

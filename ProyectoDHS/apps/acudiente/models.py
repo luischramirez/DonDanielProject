@@ -170,7 +170,7 @@ class Suplemento(models.Model):
     Clase encargada de representar el suplemento que se le da a un perro 
     """
     nombre = models.TextField()
-    marca = models.IntegerField()
+    marca = models.TextField()
 
     def __str__(self):
         return self.nombre

@@ -16,12 +16,12 @@
     
     <script>
         $( function() {
-            $("#nivel").after("<button> <a href='#'> Agregar Nivel de Entrenamiento </a> </button>");
-            $("#veterinario").after("<button> <a href='#'> Agregar Veterinario </a></button>");
+            $("#nivel").after("<button> <a href='#'> Agregar Nivel Personalizado </a> </button>");
+            $("#veterinario").after("<button> <a href='{% url 'perro:registrar_veterinario'%}'> Agregar Veterinario </a></button>");
             $("#dieta").after("<button> <a href='#'> Agregar Dieta </a> </button>");
-            $("#padre").after("<button> <a href='#'> Agregar Padre </a> </button>");
-            $("#madre").after("<button> <a href='#'> Agregar Madre </a> </button>");
-            $("#suplemento").after("<button><a href='#'> Agregar Suplemento </a> </button>");
+            $("#padre").after("<button> <a href='{% url 'perro:registrar_padre'%}'> Agregar Padre </a> </button>");
+            $("#madre").after("<button> <a href='{% url 'perro:registrar_madre'%}'> Agregar Madre </a> </button>");
+            $("#suplemento").after("<button><a href='{% url 'perro:registrar_suplemento'%}'> Agregar Suplemento </a> </button>");
             //se pinta el calendario para cada campo
             $( "#fecha_nacimiento" ).datepicker();
             $( "#fecha_desparasitacion" ).datepicker();
