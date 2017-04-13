@@ -76,19 +76,6 @@ class Ejercicio(models.Model):
         db_table = 'Ejercicio'
 
 
-class EjercicioIntermedio(models.Model):
-    """
-    Clase encargada de representar los ejercicios asociados a un nivel de entrenamiento 
-    """
-    id_ejercicio = models.ForeignKey(Ejercicio, models.DO_NOTHING, db_column='id_ejercicio')
-    id_nivel_entrenamiento = models.ForeignKey('NivelEntrenamiento', models.DO_NOTHING, db_column='id_nivel_entrenamiento')
-    tiempo_entrenamiento = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'Ejercicio_intermedio'
-
-
 class EstadoPerruno(models.Model):
     """
     Clase encargada de representar el estado del perro (reservado, apto para rescate, apto para busqueda) 
@@ -133,6 +120,8 @@ class NivelEntrenamiento(models.Model):
     Clase encargada de representar el nivel de entrenamiento de un perro 
     """
     nombre = models.TextField()
+    tiempo_entrenamiento = models.IntegerField()
+    ejercicios = models.ManyToManyField(Ejercicio)
 
     class Meta:
         managed = False
@@ -174,6 +163,20 @@ class Vacuna(models.Model):
         db_table = 'Vacuna'
 
 
+class Reserva(models.Model):
+    """
+    Clase encargada de representar la reserva de un perro 
+    """
+    tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
+    fecha_entrada = models.DateField()
+    fecha_salida = models.DateField()
+    tiempo_estadia = models.IntegerField(blank=True, null=True)
+    precio_aproximado = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Reserva'
+
 
 class Perro(models.Model):
     """
@@ -201,6 +204,7 @@ class Perro(models.Model):
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio', blank=True, null=True)
     suplemento = models.ManyToManyField(Suplemento)
     vacuna = models.ManyToManyField(Vacuna)
+    reserva = models.ManyToManyField(Reserva)
 
     class Meta:
         managed = False
@@ -216,33 +220,6 @@ class Raza(models.Model):
     class Meta:
         managed = False
         db_table = 'Raza'
-
-
-class Reserva(models.Model):
-    """
-    Clase encargada de representar la reserva de un perro 
-    """
-    tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
-    fecha_entrada = models.DateField()
-    fecha_salida = models.DateField()
-    tiempo_estadia = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Reserva'
-
-
-class ReservaIntermedia(models.Model):
-    """
-    Clase encargada de representar la reserva la cual varias perros pueden estar asociados
-    """
-    id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
-    id_reserva = models.ForeignKey(Reserva, models.DO_NOTHING, db_column='id_reserva', blank=True, null=True)
-    precio_aproximado = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Reserva_intermedia'
 
 
 class Tamanio(models.Model):
