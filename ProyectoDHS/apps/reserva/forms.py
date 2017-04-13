@@ -11,7 +11,7 @@ class FormularioReserva(forms.ModelForm):
         model = Reserva
 
         fields = [
-            'perro',
+            'id_perro',
             'tipo_reserva',
             'fecha_entrada',
             'tiempo_estadia',
@@ -19,21 +19,19 @@ class FormularioReserva(forms.ModelForm):
             'precio_aproximado',
         ]
         labels = {
-            'perro': 'Seleccione el perro',
+            'id_perro': 'Seleccione el perro',
             'tipo_reserva': 'Seleccione el tipo de reserva',
             'fecha_entrada': 'Fecha de entrada',
             'tiempo_estadia': 'Tiempo de estadìa',
             'fecha_salida': 'Fecha de salida',
             'precio_aproximado': 'Precio aproximado',
         }
-
+        
         widgets = { 
-            'perro': forms.Select(attrs={'class':'form-control'}),
-            'tipo_reserva': forms.Select(attrs={'class':'form-control'}),
-            'fecha_entrada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox'}),
-            'tiempo_estadia': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Tiempo de estadìa en dìas'}),
-            'fecha_salida': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox'}),
-            'precio_aproximado': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Valor a cobrar aproximado'}),
+            'id_perro': forms.Select(attrs={'class':'form-control','id':'id_perro'}),
+            'tipo_reserva': forms.Select(attrs={'class':'form-control','id':'tipo_reserva'}),
+            'fecha_entrada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_entrada'}),
+            'tiempo_estadia': forms.NumberInput(attrs={'class':'form-control','id':'tiempo_estadia','placeholder':'Tiempo de estadìa en dìas'}),
+            'fecha_salida': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_salida'}),
+            'precio_aproximado': forms.NumberInput(attrs={'class':'form-control','id':'precio_aproximado','placeholder':'Valor a cobrar aproximado'}),
         }
-
-

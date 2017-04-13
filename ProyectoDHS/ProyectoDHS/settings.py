@@ -106,13 +106,9 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-<<<<<<< HEAD
-"""
-
-=======
 
 """
->>>>>>> caa7c3e996b812eaeac63d7c8785adca73d1bae0
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
