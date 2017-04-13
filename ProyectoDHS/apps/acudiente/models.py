@@ -163,6 +163,17 @@ class Suplemento(models.Model):
         managed = False
         db_table = 'Suplemento'        
 
+class Vacuna(models.Model):
+    """
+    Clase encargada de representar la vacuna del perro 
+    """
+    nombre = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'Vacuna'
+
+
 
 class Perro(models.Model):
     """
@@ -189,6 +200,7 @@ class Perro(models.Model):
     id_acudiente = models.ForeignKey(Acudiente, models.DO_NOTHING, db_column='id_acudiente', blank=True, null=True)
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio', blank=True, null=True)
     suplemento = models.ManyToManyField(Suplemento)
+    vacuna = models.ManyToManyField(Vacuna)
 
     class Meta:
         managed = False
@@ -211,7 +223,9 @@ class Reserva(models.Model):
     Clase encargada de representar la reserva de un perro 
     """
     tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
-    fecha = models.DateField()
+    fecha_entrada = models.DateField()
+    fecha_salida = models.DateField()
+    tiempo_estadia = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -264,32 +278,6 @@ class TipoReserva(models.Model):
         db_table = 'Tipo_reserva'
 
 
-class TipoServicio(models.Model):
-    """
-    Clase encargada de representar el tipo de servicio al cual está adscrito un perro 
-    """
-    nombre = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'Tipo_servicio'
-
-
-class TipoServicioPerro(models.Model):
-    """
-    Clase encargada de representar la asociación entre los perros con los servicios ofrecidos por el centro (adiestramiento, crianza, guarderia)
-    """
-    fecha_entrada = models.DateField(blank=True, null=True)
-    tiempo_estadia = models.DateField(blank=True, null=True)
-    fecha_salida = models.DateField(blank=True, null=True)
-    precio_aproximado = models.IntegerField(blank=True, null=True)
-    id_tipo_servicio = models.ForeignKey(TipoServicio, models.DO_NOTHING, db_column='id_tipo_servicio', blank=True, null=True)
-    id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Tipo_servicio_perro'
-
 
 class UnidadMedida(models.Model):
     """
@@ -300,17 +288,6 @@ class UnidadMedida(models.Model):
     class Meta:
         managed = False
         db_table = 'Unidad_medida'
-
-
-class Vacuna(models.Model):
-    """
-    Clase encargada de representar la vacuna del perro 
-    """
-    nombre = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'Vacuna'
 
 
 class VacunaPerro(models.Model):

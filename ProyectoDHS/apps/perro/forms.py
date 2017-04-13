@@ -32,6 +32,7 @@ class FormularioPerro(forms.ModelForm):
             'id_acudiente',
             'id_tamanio',
             'suplemento',
+            'vacuna',
         ]
         labels = {
             'nombre': 'Nombre del perro',
@@ -55,6 +56,7 @@ class FormularioPerro(forms.ModelForm):
             'id_acudiente': 'Acudiente',
             'id_tamanio': 'Tamaño',
             'suplemento': 'Suplementos',
+            'vacuna': 'Vacunas',
         }
 
         widgets = { 
@@ -79,4 +81,5 @@ class FormularioPerro(forms.ModelForm):
             'id_acudiente': forms.Select(attrs={'class':'form-control'}),
             'id_tamanio': forms.Select(attrs={'class':'form-control'}),
             'suplemento': forms.CheckboxSelectMultiple(),
+            'vacuna': forms.CheckboxSelectMultiple(),
         }
