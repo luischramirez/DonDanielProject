@@ -204,6 +204,22 @@ class Vacuna(models.Model):
         managed = False
         db_table = 'Vacuna'
 
+
+class Reserva(models.Model):
+    """
+    Clase encargada de representar la reserva de un perro 
+    """
+    tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
+    fecha_entrada = models.DateField()
+    fecha_salida = models.DateField()
+    tiempo_estadia = models.IntegerField(blank=True, null=True)
+    precio_aproximado = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Reserva'
+
+
 class Perro(models.Model):
     """
     Clase encargada de representar un perro 
@@ -230,6 +246,7 @@ class Perro(models.Model):
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio', blank=True, null=True)
     suplemento = models.ManyToManyField(Suplemento)
     vacuna = models.ManyToManyField(Vacuna)
+    reserva = models.ManyToManyField(Reserva)
 
     def __str__(self):
         return self.nombre
@@ -263,33 +280,6 @@ class Raza(models.Model):
     class Meta:
         managed = False
         db_table = 'Raza'
-
-
-class Reserva(models.Model):
-    """
-    Clase encargada de representar la reserva de un perro 
-    """
-    tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
-    fecha_entrada = models.DateField()
-    fecha_salida = models.DateField()
-    tiempo_estadia = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Reserva'
-
-
-class ReservaIntermedia(models.Model):
-    """
-    Clase encargada de representar la reserva la cual varias perros pueden estar asociados
-    """
-    id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
-    id_reserva = models.ForeignKey(Reserva, models.DO_NOTHING, db_column='id_reserva', blank=True, null=True)
-    precio_aproximado = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Reserva_intermedia'
 
 
 class Tamanio(models.Model):
