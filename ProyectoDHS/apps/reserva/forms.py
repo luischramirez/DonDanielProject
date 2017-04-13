@@ -1,6 +1,5 @@
 from django import forms
 from apps.reserva.models import Reserva
-from apps.reserva.models import ReservaIntermedia
 from apps.reserva.models import TipoReserva
 
 class FormularioReserva(forms.ModelForm):
@@ -11,7 +10,7 @@ class FormularioReserva(forms.ModelForm):
         model = Reserva
 
         fields = [
-            'id_perro',
+            'perro',
             'tipo_reserva',
             'fecha_entrada',
             'tiempo_estadia',
@@ -19,7 +18,7 @@ class FormularioReserva(forms.ModelForm):
             'precio_aproximado',
         ]
         labels = {
-            'id_perro': 'Seleccione el perro',
+            'perro': 'Seleccione el perro',
             'tipo_reserva': 'Seleccione el tipo de reserva',
             'fecha_entrada': 'Fecha de entrada',
             'tiempo_estadia': 'Tiempo de estadìa',
@@ -28,7 +27,7 @@ class FormularioReserva(forms.ModelForm):
         }
         
         widgets = { 
-            'id_perro': forms.Select(attrs={'class':'form-control','id':'id_perro'}),
+            'perro': forms.Select(attrs={'class':'form-control','id':'perro'}),
             'tipo_reserva': forms.Select(attrs={'class':'form-control','id':'tipo_reserva'}),
             'fecha_entrada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_entrada'}),
             'tiempo_estadia': forms.NumberInput(attrs={'class':'form-control','id':'tiempo_estadia','placeholder':'Tiempo de estadìa en dìas'}),

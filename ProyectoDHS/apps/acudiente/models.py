@@ -37,6 +37,9 @@ class Color(models.Model):
     """
     nombre = models.TextField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'Color'
@@ -48,6 +51,9 @@ class Dia(models.Model):
     """
     nombre = models.TextField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'Dia'
@@ -58,6 +64,9 @@ class Dieta(models.Model):
     Clase encargada de representar la dieta del perro 
     """
     tipo_dieta = models.ForeignKey('TipoDieta', models.DO_NOTHING, db_column='tipo_dieta')
+
+    def __str__(self):
+        return self.tipo_dieta
 
     class Meta:
         managed = False
@@ -71,6 +80,9 @@ class Ejercicio(models.Model):
     nombre = models.TextField()
     descripcion = models.TextField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'Ejercicio'
@@ -81,6 +93,9 @@ class EstadoPerruno(models.Model):
     Clase encargada de representar el estado del perro (reservado, apto para rescate, apto para busqueda) 
     """
     nombre = models.TextField()
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         managed = False
@@ -110,6 +125,9 @@ class Madre(models.Model):
     nombre = models.TextField()
     edad = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'Madre'
@@ -122,6 +140,9 @@ class NivelEntrenamiento(models.Model):
     nombre = models.TextField()
     tiempo_entrenamiento = models.IntegerField()
     ejercicios = models.ManyToManyField(Ejercicio)
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         managed = False
@@ -137,6 +158,9 @@ class Padre(models.Model):
     nombre = models.TextField()
     edad = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'Padre'
@@ -148,9 +172,13 @@ class Suplemento(models.Model):
     nombre = models.TextField()
     marca = models.IntegerField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
-        db_table = 'Suplemento'        
+        db_table = 'Suplemento'      
+
 
 class Vacuna(models.Model):
     """
@@ -158,24 +186,12 @@ class Vacuna(models.Model):
     """
     nombre = models.TextField()
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'Vacuna'
-
-
-class Reserva(models.Model):
-    """
-    Clase encargada de representar la reserva de un perro 
-    """
-    tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
-    fecha_entrada = models.DateField()
-    fecha_salida = models.DateField()
-    tiempo_estadia = models.IntegerField(blank=True, null=True)
-    precio_aproximado = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Reserva'
 
 
 class Perro(models.Model):
@@ -204,67 +220,29 @@ class Perro(models.Model):
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio', blank=True, null=True)
     suplemento = models.ManyToManyField(Suplemento)
     vacuna = models.ManyToManyField(Vacuna)
-    reserva = models.ManyToManyField(Reserva)
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         managed = False
         db_table = 'Perro'
 
 
-class Raza(models.Model):
+class Reserva(models.Model):
     """
-    Clase encargada de representar la raza del perro 
+    Clase encargada de representar la reserva de un perro 
     """
-    nombre = models.TextField()
+    tipo_reserva = models.ForeignKey('TipoReserva', models.DO_NOTHING, db_column='tipo_reserva')
+    fecha_entrada = models.DateField()
+    fecha_salida = models.DateField()
+    tiempo_estadia = models.IntegerField(blank=True, null=True)
+    precio_aproximado = models.IntegerField(blank=True, null=True)
+    perro = models.ManyToManyField(Perro)
 
     class Meta:
         managed = False
-        db_table = 'Raza'
-
-
-class Tamanio(models.Model):
-    """
-    Clase encargada de representar el tamaño del perro 
-    """
-    nombre = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'Tamanio'
-
-
-class TipoDieta(models.Model):
-    """
-    Clase encargada de representar el tipo de dieta del perro 
-    """
-    nombre = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'Tipo_dieta'
-
-
-class TipoReserva(models.Model):
-    """
-    Clase encargada de representar el tipo de reserva al cual un perro está asociado. (adiestramiento, crianza, guarderia) 
-    """
-    nombre = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Tipo_reserva'
-
-
-
-class UnidadMedida(models.Model):
-    """
-    Clase encargada de representar la unidad de medida de la alimentación del perro 
-    """
-    nombre = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'Unidad_medida'
+        db_table = 'Reserva'
 
 
 class VacunaPerro(models.Model):
@@ -279,7 +257,75 @@ class VacunaPerro(models.Model):
     class Meta:
         managed = False
         db_table = 'Vacuna_perro'
+        
+class Raza(models.Model):
+    """
+    Clase encargada de representar la raza del perro 
+    """
+    nombre = models.TextField()
 
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        managed = False
+        db_table = 'Raza'
+
+
+class Tamanio(models.Model):
+    """
+    Clase encargada de representar el tamaño del perro 
+    """
+    nombre = models.TextField()
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        managed = False
+        db_table = 'Tamanio'
+
+
+class TipoDieta(models.Model):
+    """
+    Clase encargada de representar el tipo de dieta del perro 
+    """
+    nombre = models.TextField()
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        managed = False
+        db_table = 'Tipo_dieta'
+
+
+class TipoReserva(models.Model):
+    """
+    Clase encargada de representar el tipo de reserva al cual un perro está asociado. (adiestramiento, crianza, guarderia) 
+    """
+    nombre = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        managed = False
+        db_table = 'Tipo_reserva'
+
+
+class UnidadMedida(models.Model):
+    """
+    Clase encargada de representar la unidad de medida de la alimentación del perro 
+    """
+    nombre = models.TextField()
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        managed = False
+        db_table = 'Unidad_medida'
 
 class Veterinario(models.Model):
     """
@@ -290,6 +336,10 @@ class Veterinario(models.Model):
     direccion = models.TextField()
     email = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return self.nombre
+        
     class Meta:
         managed = False
         db_table = 'Veterinario'
+

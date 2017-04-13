@@ -1,6 +1,5 @@
 from apps.reserva.forms import FormularioReserva
 from apps.reserva.models import Reserva
-from apps.reserva.models import ReservaIntermedia
 from apps.reserva.models import TipoReserva
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView

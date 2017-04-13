@@ -43,9 +43,7 @@ INSTALLED_APPS = [
     'apps.perro',
     'apps.recurso',
     'apps.notificacion',
-    'apps.reserva_adiestramiento',
-    'apps.reserva_crianza',
-    'apps.reserva_guarderia',
+    'apps.reserva',
 ]
 
 MIDDLEWARE_CLASSES = [

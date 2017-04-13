@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^acudiente/', include('apps.acudiente.urls', namespace = 'acudiente')),
     url(r'^perro/',include('apps.perro.urls', namespace='perro')),
+    url(r'^reserva/', include('apps.reserva.urls',namespace='reserva')),
     url(r'^accounts/login/',login,{'template_name':'login.html'}, name='login'),
     url(r'^$',login,{'template_name':'login.html'}, name='login'),
     url(r'^logout/',logout_then_login, name='logout'),
