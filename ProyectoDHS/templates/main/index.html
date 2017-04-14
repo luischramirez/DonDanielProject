@@ -71,8 +71,8 @@
 					<li class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Reservas<i class="icon-angle-down"></i></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Registrar</a></li>
-							<li><a href="#">Listar</a></li>
+							<li><a href="{% url 'reserva:registrar_reserva'%}">Registrar</a></li>
+							<li><a href="{% url 'reserva:listar_reserva'%}">Listar</a></li>
 						</ul>
 					</li>
 					<li class="active"><a href="{% url 'logout' %}">Salir</a></li>

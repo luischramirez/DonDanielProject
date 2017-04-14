@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'ProyectoDHS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ProyectoSw3',
+        'NAME': 'ProyectoSoftware3',
         'HOST': 'localhost',
         'USER': 'postgres',
         'PASSWORD': 'andrez19',
@@ -141,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 

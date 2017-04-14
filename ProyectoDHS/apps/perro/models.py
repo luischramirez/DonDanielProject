@@ -59,6 +59,20 @@ class Dia(models.Model):
         db_table = 'Dia'
 
 
+<<<<<<< HEAD
+=======
+class Dieta(models.Model):
+    """
+    Clase encargada de representar la dieta del perro 
+    """
+    tipo_dieta = models.ForeignKey('TipoDieta', models.DO_NOTHING, db_column='tipo_dieta')
+
+    class Meta:
+        managed = False
+        db_table = 'Dieta'
+
+
+>>>>>>> 3a0edf8b86c0928a0cb541a7ea058344aca9cb37
 class Ejercicio(models.Model):
     """
     Clase encargada de representar los ejercicios para adiestramiento del perro 
@@ -227,7 +241,10 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'Reserva'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a0edf8b86c0928a0cb541a7ea058344aca9cb37
         
 class Raza(models.Model):
     """

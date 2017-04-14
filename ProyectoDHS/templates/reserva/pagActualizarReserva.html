@@ -1,0 +1,37 @@
+{% extends 'base/base.html'%}
+{% block tipo_accion %}Actualizar datos de la reserva {% endblock %}
+{% block content %} 
+<form method='POST'>
+        <!-- token de seguridad obligatorio-->
+		<!-- se pinte el formulario como parrafo-->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="boton" > Actualizar </button>
+</form>
+{% endblock %}
+
+{% block js %}
+    
+    <script>
+         $("#fecha_entrada").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_entrada = $( "#fecha_entrada" ).val();
+                var split = fecha_entrada.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_entrada" ).val(nueva_fecha);
+        });
+        $("#fecha_salida").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_salida = $( "#fecha_salida" ).val();
+                var split = fecha_salida.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_salida" ).val(nueva_fecha);
+        });
+
+        $( function() {
+            //se pinta el calendario para cada campo
+            $( "#fecha_entrada" ).datepicker();
+            $( "#fecha_salida" ).datepicker();
+        });
+    </script>
+{% endblock %}

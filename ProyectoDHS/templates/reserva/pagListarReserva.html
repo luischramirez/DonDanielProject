@@ -1,0 +1,43 @@
+{% extends 'base/base.html'%}
+{% block tipo_accion %}Lista de Reservas{% endblock %}
+{% block content %} 
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+            <td><strong>#</strong></td>
+            <td><strong>Tipo de reserva</strong></td>
+            <td><strong>Nombre del perro</strong></td>
+            <td><strong>Raza del perro</strong></td>
+            <td><strong>Fecha de entrada</strong></td>
+            <td><strong>Fecha de salida</strong></td>
+            <td><strong>Tiempo de estadía</strong></td>
+            <td><strong>Precio proximado</strong></td>
+            <td><strong>Acciones</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for reserva in object_list %}
+        <tr>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.tipo_reserva }}</td>
+            <td>{{ reserva.perro.nombre }}</td>
+            <td>{{ reserva.perro.id_raza.nombre }}</td>
+            <td>{{ reserva.fecha_entrada }}</td>
+            <td>{{ reserva.fecha_salida }}</td>
+            <td>{{ reserva.tiempo_estadia }}</td>
+            <td>{{ reserva.precio_aproximado }}</td>
+            <td>
+			<!-- se coloca un link hacia la url donde se realiza la acción de editar y se manda como parámetro el id del acudiente-->
+                <a class ="btn btn-primary" href="{% url 'reserva:actualizar_reserva' reserva.id%}">Editar</a>
+			<!-- se coloca un link hacia la url donde se realiza la acción de eliminar y se manda como parámetro el id del acudiente-->
+                <a class ="btn btn-danger" href="{% url 'reserva:eliminar_reserva' reserva.id%}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <h1>No hay registros de reservas</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}
