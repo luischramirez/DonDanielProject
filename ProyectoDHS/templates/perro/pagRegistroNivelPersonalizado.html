@@ -1,0 +1,13 @@
+{% extends 'base/base.html'%}
+
+{% block tipo_accion %}Registro Nivel Personalizado{% endblock %}
+
+{% block content %} 
+    <form method='POST'>
+            <!-- token de seguridad obligatorio-->
+            <!-- se pinte el formulario como parrafo-->
+            {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" id="boton"> Registrar </button>
+    </form>
+{% endblock %}

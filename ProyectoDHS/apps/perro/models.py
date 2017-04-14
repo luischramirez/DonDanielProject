@@ -139,7 +139,7 @@ class NivelEntrenamiento(models.Model):
     """
     nombre = models.TextField()
     tiempo_entrenamiento = models.IntegerField()
-    ejercicios = models.ManyToManyField(Ejercicio)
+    ejercicio = models.ManyToManyField(Ejercicio)
 
     def __str__(self):
         return self.nombre

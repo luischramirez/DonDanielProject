@@ -1,5 +1,5 @@
 from django import forms
-from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento
+from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento,NivelEntrenamiento
 
 
 class FormularioPerro(forms.ModelForm):
@@ -18,8 +18,8 @@ class FormularioPerro(forms.ModelForm):
             'peso',
             'estado_salud',
             'fecha_desparasitacion',
-            'epoca_celo_aproximada',
             'epoca_celo_real',
+            'epoca_celo_aproximada',
             'condiciones_prestamo',
             'id_color',
             'id_raza',
@@ -42,8 +42,8 @@ class FormularioPerro(forms.ModelForm):
             'peso': 'Peso',
             'estado_salud': 'Estado de salud',
             'fecha_desparasitacion': 'Fecha de desparasitación',
-            'epoca_celo_aproximada': 'Época de celo aproximada',
             'epoca_celo_real': 'Época de celo real',
+            'epoca_celo_aproximada': 'Época de celo aproximada',
             'condiciones_prestamo': 'Condiciones de préstamo',
             'id_color': 'Color',
             'id_raza': 'Raza',
@@ -62,13 +62,13 @@ class FormularioPerro(forms.ModelForm):
         widgets = { 
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
-            'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
+            'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad','disabled':'true'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en gramos'}),
             'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H'}),
             'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
             'estado_salud': forms.TextInput(attrs={'class':'form-control', 'id':'estado_salud','placeholder':'Condiciones en las que se recibe al canino'}),
-            'epoca_celo_aproximada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox'}),
             'epoca_celo_real': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_real'}),
+            'epoca_celo_aproximada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox','disabled':'true'}),
             'condiciones_prestamo': forms.TextInput(attrs={'class':'form-control', 'id':'condiciones_prestamo','placeholder':'Condiciones pautadas con el dueño del canino'}),
             'id_color': forms.Select(attrs={'class':'form-control', 'id':'color'}),
             'id_raza': forms.Select(attrs={'class':'form-control'}),
@@ -181,4 +181,27 @@ class FormularioSuplemento(forms.ModelForm):
         widgets={
             'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'marca':forms.TextInput(attrs={'class':'form-control', 'id':'marca','placeholder':'Marca'}),
-            }
+        }
+
+class FormularioNivelPersonalizado(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar los niveles personalizados de adiestramiento de un perro
+    """
+    class Meta:
+        model = NivelEntrenamiento
+
+        fields=[
+            'nombre',
+            'tiempo_entrenamiento',
+            'ejercicio',
+        ]
+        labels={
+            'nombre':'Nombre',
+            'tiempo_entrenamiento':'Tiempo de entrenamiento',
+            'ejercicio':'Ejercicios',
+        }
+        widgets={
+            'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
+            'tiempo_entrenamiento':forms.NumberInput(attrs={'class':'form-control', 'id':'tiempo_entreno','placeholder':'Tiempo de entrenamiento (en días)'}),
+            'ejercicio':forms.CheckboxSelectMultiple(),
+        }

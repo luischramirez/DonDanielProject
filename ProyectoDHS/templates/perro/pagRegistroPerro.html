@@ -16,7 +16,63 @@
     
     <script>
         $( function() {
-            $("#nivel").after("<button> <a href='#'> Agregar Nivel Personalizado </a> </button>");
+            $("#fecha_nacimiento").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_nac = $( "#fecha_nacimiento" ).val();
+                var split = fecha_nac.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_nacimiento" ).val(nueva_fecha);
+
+                //fecha actual
+                var f2 = new Date();
+                var dd = f2.getDate();
+                var mm = f2.getMonth()+1; //hoy es 0!
+                var yyyy = f2.getFullYear();
+
+                if(dd<10) {
+                    dd='0'+dd
+                } 
+
+                if(mm<10) {
+                    mm='0'+mm
+                } 
+                //calculo la edad
+                f2 = mm+'/'+dd+'/'+yyyy;
+                var f1 = $("#fecha_nacimiento").val();
+                var aFecha1 = f1.split('/'); 
+                var aFecha2 = f2.split('/'); 
+                var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]); 
+                var fFecha2 = Date.UTC(aFecha2[2],aFecha2[0]-1,aFecha2[1]); 
+                var dif = fFecha2 - fFecha1;
+                var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+                dias = Math.round((dias/30)/12);
+                alert("tienes "+dias+" años");
+            });
+            $("#epoca_celo_real").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_celo = $( "#epoca_celo_real" ).val();
+                var split = fecha_celo.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#epoca_celo_real" ).val(nueva_fecha);
+
+                var suma = 6;
+                var fechaReal = $("#epoca_celo_real").val();
+                var fecha = fechaReal.split('/');
+                var total = parseInt(fecha[1])+suma;
+                alert(total);
+                if(total>12){
+                    var diferencia = total - 12;
+                    fecha[1] = 0 + diferencia;
+                    fecha[1] = "0"+ fecha[1];
+                    fecha[2] = parseInt(fecha[2])+1;
+                    total = fecha[1];
+                }
+                var fechaNueva = fecha[0]+"/"+total+"/"+fecha[2];
+                alert(fechaNueva);
+            });
+           
+
+            $("#nivel").after("<button> <a href='{% url 'perro:registrar_nivel_personalizado'%}'> Agregar Nivel Personalizado </a> </button>");
             $("#veterinario").after("<button> <a href='{% url 'perro:registrar_veterinario'%}'> Agregar Veterinario </a></button>");
             $("#dieta").after("<button> <a href='#'> Agregar Dieta </a> </button>");
             $("#padre").after("<button> <a href='{% url 'perro:registrar_padre'%}'> Agregar Padre </a> </button>");
@@ -25,7 +81,16 @@
             //se pinta el calendario para cada campo
             $( "#fecha_nacimiento" ).datepicker();
             $( "#fecha_desparasitacion" ).datepicker();
-            $( "#epoca_celo_aprox" ).datepicker();
+            $( "#fecha_desparasitacion" ).change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_des = $( "#fecha_desparasitacion" ).val();
+                var split = fecha_des.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_desparasitacion" ).val(nueva_fecha);
+            });
+             
+        
+            //$( "#epoca_celo_aprox" ).datepicker();
             $( "#epoca_celo_real" ).datepicker();
         });
     </script>
