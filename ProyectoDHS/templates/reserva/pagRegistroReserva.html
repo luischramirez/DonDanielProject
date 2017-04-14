@@ -15,6 +15,21 @@
 {% block js %}
     
     <script>
+         $("#fecha_entrada").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_entrada = $( "#fecha_entrada" ).val();
+                var split = fecha_entrada.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_entrada" ).val(nueva_fecha);
+        });
+        $("#fecha_salida").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_salida = $( "#fecha_salida" ).val();
+                var split = fecha_salida.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_salida" ).val(nueva_fecha);
+        });
+
         $( function() {
             //se pinta el calendario para cada campo
             $( "#fecha_entrada" ).datepicker();

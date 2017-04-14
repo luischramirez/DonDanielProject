@@ -238,7 +238,7 @@ class Reserva(models.Model):
     fecha_salida = models.DateField()
     tiempo_estadia = models.IntegerField(blank=True, null=True)
     precio_aproximado = models.IntegerField(blank=True, null=True)
-    perro = models.ManyToManyField(Perro)
+    perro = models.ForeignKey(Perro)
 
     class Meta:
         managed = False

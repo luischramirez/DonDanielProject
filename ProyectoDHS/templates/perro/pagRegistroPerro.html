@@ -54,7 +54,7 @@
                 var split = fecha_celo.split("/");
                 var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
                 $( "#epoca_celo_real" ).val(nueva_fecha);
-
+                // calcular la nueva epoca de celo
                 var suma = 6;
                 var fechaReal = $("#epoca_celo_real").val();
                 var fecha = fechaReal.split('/');
@@ -69,6 +69,28 @@
                 }
                 var fechaNueva = fecha[0]+"/"+total+"/"+fecha[2];
                 alert(fechaNueva);
+            });
+            $("#sexo").change(function(){
+                var sexo = $("#sexo").val();
+                if(sexo=='M'){
+                    var label1 = document.getElementsByTagName("label")[7];
+                    var label2 = document.getElementsByTagName("label")[8];
+                    label1.setAttribute("class","hidden");
+                    label2.setAttribute("class","hidden");
+                    $("#epoca_celo_real").hide();
+                    $("#epoca_celo_aprox").hide();
+                }else if(sexo=='H'){
+                    var label1 = document.getElementsByTagName("label")[7];
+                    var label2 = document.getElementsByTagName("label")[8];
+                    label1.setAttribute("class","");
+                    label2.setAttribute("class","");
+                    $("#epoca_celo_real").show();
+                    $("#epoca_celo_aprox").show();
+                }
+                else{
+                    alert("Porfavor ingrese M o H en el campo sexo");
+                }
+
             });
            
 
