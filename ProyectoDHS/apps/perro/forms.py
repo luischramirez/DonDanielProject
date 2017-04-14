@@ -193,15 +193,15 @@ class FormularioNivelPersonalizado(forms.ModelForm):
         fields=[
             'nombre',
             'tiempo_entrenamiento',
-            'ejercicio',
+            'ejercicios',
         ]
         labels={
             'nombre':'Nombre',
             'tiempo_entrenamiento':'Tiempo de entrenamiento',
-            'ejercicio':'Ejercicios',
+            'ejercicios':'Ejercicios',
         }
         widgets={
             'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'tiempo_entrenamiento':forms.NumberInput(attrs={'class':'form-control', 'id':'tiempo_entreno','placeholder':'Tiempo de entrenamiento (en días)'}),
-            'ejercicio':forms.CheckboxSelectMultiple(),
+            'ejercicios':forms.CheckboxSelectMultiple(),
         }

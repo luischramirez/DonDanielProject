@@ -29,8 +29,8 @@ class FormularioReserva(forms.ModelForm):
         widgets = { 
             'perro': forms.Select(attrs={'class':'form-control','id':'perro'}),
             'tipo_reserva': forms.Select(attrs={'class':'form-control','id':'tipo_reserva'}),
-            'fecha_entrada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_entrada'}),
+            'fecha_entrada': forms.TextInput(attrs={'class':'datepicker form-control', 'id':'fecha_entrada'}),
             'tiempo_estadia': forms.NumberInput(attrs={'class':'form-control','id':'tiempo_estadia','placeholder':'Tiempo de estadìa en dìas'}),
-            'fecha_salida': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_salida'}),
+            'fecha_salida': forms.TextInput(attrs={'class':'datepicker form-control', 'id':'fecha_salida'}),
             'precio_aproximado': forms.NumberInput(attrs={'class':'form-control','id':'precio_aproximado','placeholder':'Valor a cobrar aproximado'}),
         }

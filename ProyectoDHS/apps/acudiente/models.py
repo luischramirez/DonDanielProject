@@ -243,20 +243,6 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'Reserva'
-
-
-class VacunaPerro(models.Model):
-    """
-    Clase encargada de representar la asociación entre vacuna y perro 
-    """
-    id_vacuna = models.ForeignKey(Vacuna, models.DO_NOTHING, db_column='id_vacuna', blank=True, null=True)
-    id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
-    fecha = models.DateField(blank=True, null=True)
-    vacuna_aplicada = models.NullBooleanField()
-
-    class Meta:
-        managed = False
-        db_table = 'Vacuna_perro'
         
 class Raza(models.Model):
     """

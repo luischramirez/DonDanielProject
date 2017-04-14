@@ -65,9 +65,6 @@ class Dieta(models.Model):
     """
     tipo_dieta = models.ForeignKey('TipoDieta', models.DO_NOTHING, db_column='tipo_dieta')
 
-    def __str__(self):
-        return self.tipo_dieta
-
     class Meta:
         managed = False
         db_table = 'Dieta'
@@ -139,7 +136,7 @@ class NivelEntrenamiento(models.Model):
     """
     nombre = models.TextField()
     tiempo_entrenamiento = models.IntegerField()
-    ejercicio = models.ManyToManyField(Ejercicio)
+    ejercicios = models.ManyToManyField(Ejercicio)
 
     def __str__(self):
         return self.nombre
@@ -244,20 +241,6 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'Reserva'
-
-
-class VacunaPerro(models.Model):
-    """
-    Clase encargada de representar la asociación entre vacuna y perro 
-    """
-    id_vacuna = models.ForeignKey(Vacuna, models.DO_NOTHING, db_column='id_vacuna', blank=True, null=True)
-    id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
-    fecha = models.DateField(blank=True, null=True)
-    vacuna_aplicada = models.NullBooleanField()
-
-    class Meta:
-        managed = False
-        db_table = 'Vacuna_perro'
         
 class Raza(models.Model):
     """
