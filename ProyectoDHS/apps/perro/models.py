@@ -59,20 +59,6 @@ class Dia(models.Model):
         db_table = 'Dia'
 
 
-class Dieta(models.Model):
-    """
-    Clase encargada de representar la dieta del perro 
-    """
-    tipo_dieta = models.ForeignKey('TipoDieta', models.DO_NOTHING, db_column='tipo_dieta')
-
-    def __str__(self):
-        return self.tipo_dieta
-
-    class Meta:
-        managed = False
-        db_table = 'Dieta'
-
-
 class Ejercicio(models.Model):
     """
     Clase encargada de representar los ejercicios para adiestramiento del perro 
@@ -106,11 +92,9 @@ class HorarioDieta(models.Model):
     """
     Clase encargada de representar el horario de la dieta de un perro 
     """
-    id_dieta = models.ForeignKey(Dieta, models.DO_NOTHING, db_column='id_dieta', blank=True, null=True)
     id_alimentacion = models.ForeignKey(Alimentacion, models.DO_NOTHING, db_column='id_alimentacion')
     id_dia = models.ForeignKey(Dia, models.DO_NOTHING, db_column='id_dia')
-    fecha = models.DateField()
-
+    
     class Meta:
         managed = False
         db_table = 'Horario_dieta'
@@ -139,7 +123,7 @@ class NivelEntrenamiento(models.Model):
     """
     nombre = models.TextField()
     tiempo_entrenamiento = models.IntegerField()
-    ejercicio = models.ManyToManyField(Ejercicio)
+    ejercicios = models.ManyToManyField(Ejercicio)
 
     def __str__(self):
         return self.nombre
@@ -211,7 +195,7 @@ class Perro(models.Model):
     id_color = models.ForeignKey(Color, models.DO_NOTHING, db_column='id_color', blank=True, null=True)
     id_raza = models.ForeignKey('Raza', models.DO_NOTHING, db_column='id_raza', blank=True, null=True)
     id_veterinario = models.ForeignKey('Veterinario', models.DO_NOTHING, db_column='id_veterinario', blank=True, null=True)
-    id_dieta = models.ForeignKey(Dieta, models.DO_NOTHING, db_column='id_dieta', blank=True, null=True)
+    id_horario_dieta = models.ForeignKey('HorarioDieta', models.DO_NOTHING, db_column='id_horario_dieta', blank=True, null=True)
     id_nivel_entrenamiento = models.ForeignKey(NivelEntrenamiento, models.DO_NOTHING, db_column='id_nivel_entrenamiento', blank=True, null=True)
     id_padre = models.ForeignKey(Padre, models.DO_NOTHING, db_column='id_padre', blank=True, null=True)
     id_madre = models.ForeignKey(Madre, models.DO_NOTHING, db_column='id_madre', blank=True, null=True)
@@ -220,7 +204,6 @@ class Perro(models.Model):
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio', blank=True, null=True)
     suplemento = models.ManyToManyField(Suplemento)
     vacuna = models.ManyToManyField(Vacuna)
-    
 
     def __str__(self):
         return self.nombre
@@ -245,19 +228,6 @@ class Reserva(models.Model):
         managed = False
         db_table = 'Reserva'
 
-
-class VacunaPerro(models.Model):
-    """
-    Clase encargada de representar la asociación entre vacuna y perro 
-    """
-    id_vacuna = models.ForeignKey(Vacuna, models.DO_NOTHING, db_column='id_vacuna', blank=True, null=True)
-    id_perro = models.ForeignKey(Perro, models.DO_NOTHING, db_column='id_perro', blank=True, null=True)
-    fecha = models.DateField(blank=True, null=True)
-    vacuna_aplicada = models.NullBooleanField()
-
-    class Meta:
-        managed = False
-        db_table = 'Vacuna_perro'
         
 class Raza(models.Model):
     """
@@ -285,20 +255,6 @@ class Tamanio(models.Model):
     class Meta:
         managed = False
         db_table = 'Tamanio'
-
-
-class TipoDieta(models.Model):
-    """
-    Clase encargada de representar el tipo de dieta del perro 
-    """
-    nombre = models.TextField()
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        managed = False
-        db_table = 'Tipo_dieta'
 
 
 class TipoReserva(models.Model):

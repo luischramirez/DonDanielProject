@@ -1,5 +1,5 @@
-from apps.perro.forms import FormularioPerro, FormularioVeterinario, FormularioMadre, FormularioPadre, FormularioSuplemento, FormularioNivelPersonalizado
-from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento, NivelEntrenamiento
+from apps.perro.forms import FormularioPerro, FormularioVeterinario, FormularioMadre, FormularioPadre, FormularioSuplemento, FormularioNivelPersonalizado, FormularioDieta
+from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento, NivelEntrenamiento, HorarioDieta
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 # Create your views here.
@@ -79,5 +79,18 @@ class RegistrarNivelPersonalizado(CreateView):
     form_class = FormularioNivelPersonalizado
     #se indica que template va a gestionar el registro
     template_name = 'perro/pagRegistroNivelPersonalizado.html'
+    #se indica cual será la url de finalización
+    success_url= reverse_lazy('perro:registrar_perro')
+
+class RegistrarDieta(CreateView):
+    """
+    Clase encargada de registrar niveles personalizados de adiestramiento de un perro
+    """
+    #se ingresa qué modelo se utilizará para el registro
+    model = HorarioDieta
+    #se indica que formulario va a dar soporte a la acción de registro
+    form_class = FormularioDieta
+    #se indica que template va a gestionar el registro
+    template_name = 'perro/pagRegistroDieta.html'
     #se indica cual será la url de finalización
     success_url= reverse_lazy('perro:registrar_perro')

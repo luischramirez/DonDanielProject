@@ -1,5 +1,5 @@
 from django import forms
-from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento,NivelEntrenamiento
+from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento,NivelEntrenamiento, HorarioDieta
 
 
 class FormularioPerro(forms.ModelForm):
@@ -24,7 +24,7 @@ class FormularioPerro(forms.ModelForm):
             'id_color',
             'id_raza',
             'id_veterinario',
-            'id_dieta',
+            'id_horario_dieta',
             'id_nivel_entrenamiento',
             'id_padre',
             'id_madre',
@@ -48,7 +48,7 @@ class FormularioPerro(forms.ModelForm):
             'id_color': 'Color',
             'id_raza': 'Raza',
             'id_veterinario': 'Veterinario',
-            'id_dieta': 'Dieta',
+            'id_horario_dieta': 'Dieta',
             'id_nivel_entrenamiento': 'Nivel de entrenamiento',
             'id_padre': 'Padre',
             'id_madre': 'Madre',
@@ -73,7 +73,7 @@ class FormularioPerro(forms.ModelForm):
             'id_color': forms.Select(attrs={'class':'form-control', 'id':'color'}),
             'id_raza': forms.Select(attrs={'class':'form-control'}),
             'id_veterinario': forms.Select(attrs={'class':'form-control','id':'veterinario'}),
-            'id_dieta': forms.Select(attrs={'class':'form-control','id':'dieta'}),
+            'id_horario_dieta': forms.Select(attrs={'class':'form-control','id':'horario_dieta'}),
             'id_nivel_entrenamiento': forms.Select(attrs={'class':'form-control','id':'nivel'}),
             'id_padre': forms.Select(attrs={'class':'form-control','id':'padre'}),
             'id_madre': forms.Select(attrs={'class':'form-control','id':'madre'}),
@@ -193,15 +193,35 @@ class FormularioNivelPersonalizado(forms.ModelForm):
         fields=[
             'nombre',
             'tiempo_entrenamiento',
-            'ejercicio',
+            'ejercicios',
         ]
         labels={
             'nombre':'Nombre',
             'tiempo_entrenamiento':'Tiempo de entrenamiento',
-            'ejercicio':'Ejercicios',
+            'ejercicios':'Ejercicios',
         }
         widgets={
             'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'tiempo_entrenamiento':forms.NumberInput(attrs={'class':'form-control', 'id':'tiempo_entreno','placeholder':'Tiempo de entrenamiento (en días)'}),
-            'ejercicio':forms.CheckboxSelectMultiple(),
+            'ejercicios':forms.CheckboxSelectMultiple(),
+        }
+
+class FormularioDieta(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar los niveles personalizados de adiestramiento de un perro
+    """
+    class Meta:
+        model = HorarioDieta
+
+        fields=[
+            'id_alimentacion',
+            'id_dia',
+        ]
+        labels={
+            'id_alimentacion':'Alimentacion',
+            'id_dia':'Dia',
+        }
+        widgets={
+            'id_alimentacion':forms.Select(attrs={'class':'form-control', 'id':'alimentacion'}),
+            'id_dia':forms.Select(attrs={'class':'form-control', 'id':'dia'}),
         }

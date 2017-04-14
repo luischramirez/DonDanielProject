@@ -17,36 +17,27 @@
     <script>
         $( function() {
             $("#fecha_nacimiento").change(function(){
-                //convertir a dd/mm/aaaa
+                // convertir a dd/mm/aaaa               
                 var fecha_nac = $( "#fecha_nacimiento" ).val();
                 var split = fecha_nac.split("/");
                 var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
                 $( "#fecha_nacimiento" ).val(nueva_fecha);
 
-                //fecha actual
-                var f2 = new Date();
-                var dd = f2.getDate();
-                var mm = f2.getMonth()+1; //hoy es 0!
-                var yyyy = f2.getFullYear();
+                var values = $( "#fecha_nacimiento" ).val().split("/");
+                var dia = values[2];
+                var mes = values[1];
+                var ano = values[0];
+                var fecha1 = dia + "-" + mes + "-" + ano;
 
-                if(dd<10) {
-                    dd='0'+dd
-                } 
+                var fechaNacimiento = new Date(fecha1).getTime();
+                var fechaActual     = new Date().getTime();
 
-                if(mm<10) {
-                    mm='0'+mm
-                } 
-                //calculo la edad
-                f2 = mm+'/'+dd+'/'+yyyy;
-                var f1 = $("#fecha_nacimiento").val();
-                var aFecha1 = f1.split('/'); 
-                var aFecha2 = f2.split('/'); 
-                var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]); 
-                var fFecha2 = Date.UTC(aFecha2[2],aFecha2[0]-1,aFecha2[1]); 
-                var dif = fFecha2 - fFecha1;
-                var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
-                dias = Math.round((dias/30)/12);
-                alert("tienes "+dias+" años");
+                var diff = fechaActual - fechaNacimiento;
+
+                var edad = (diff/(1000*60*60*24)) / 365 ;
+
+                $("#edad").val(Math.floor(edad));
+                
             });
             $("#epoca_celo_real").change(function(){
                 //convertir a dd/mm/aaaa
@@ -59,7 +50,6 @@
                 var fechaReal = $("#epoca_celo_real").val();
                 var fecha = fechaReal.split('/');
                 var total = parseInt(fecha[1])+suma;
-                alert(total);
                 if(total>12){
                     var diferencia = total - 12;
                     fecha[1] = 0 + diferencia;
@@ -68,7 +58,7 @@
                     total = fecha[1];
                 }
                 var fechaNueva = fecha[0]+"/"+total+"/"+fecha[2];
-                alert(fechaNueva);
+                $("#epoca_celo_aprox").val(fechaNueva);
             });
             $("#sexo").change(function(){
                 var sexo = $("#sexo").val();
