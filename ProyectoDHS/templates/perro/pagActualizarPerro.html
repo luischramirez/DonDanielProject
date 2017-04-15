@@ -9,3 +9,92 @@
         <button type="submit" id="boton" > Actualizar </button>
 </form>
 {% endblock %}
+{% block js %}
+    
+    <script>
+        $( function() {
+            $("#fecha_nacimiento").change(function(){
+                // convertir a dd/mm/aaaa               
+                var fecha_nac = $( "#fecha_nacimiento" ).val();
+                var split = fecha_nac.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_nacimiento" ).val(nueva_fecha);
+
+                var values = $( "#fecha_nacimiento" ).val().split("/");
+                var dia = values[2];
+                var mes = values[1];
+                var ano = values[0];
+                var fecha1 = dia + "-" + mes + "-" + ano;
+
+                var fechaNacimiento = new Date(fecha1).getTime();
+                var fechaActual     = new Date().getTime();
+
+                var diff = fechaActual - fechaNacimiento;
+
+                var edad = (diff/(1000*60*60*24)) / 365 ;
+
+                $("#edad").val(Math.floor(edad));
+                
+            });
+            $("#epoca_celo_real").change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_celo = $( "#epoca_celo_real" ).val();
+                var split = fecha_celo.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#epoca_celo_real" ).val(nueva_fecha);
+                // calcular la nueva epoca de celo
+                var suma = 6;
+                var fechaReal = $("#epoca_celo_real").val();
+                var fecha = fechaReal.split('/');
+                var total = parseInt(fecha[1])+suma;
+                if(total>12){
+                    var diferencia = total - 12;
+                    fecha[1] = 0 + diferencia;
+                    fecha[1] = "0"+ fecha[1];
+                    fecha[2] = parseInt(fecha[2])+1;
+                    total = fecha[1];
+                }
+                var fechaNueva = fecha[0]+"/"+total+"/"+fecha[2];
+                $("#epoca_celo_aprox").val(fechaNueva);
+            });
+            $("#sexo").change(function(){
+                var sexo = $("#sexo").val();
+                if(sexo=='M'){
+                    var label1 = document.getElementsByTagName("label")[7];
+                    var label2 = document.getElementsByTagName("label")[8];
+                    label1.setAttribute("class","hidden");
+                    label2.setAttribute("class","hidden");
+                    $("#epoca_celo_real").hide();
+                    $("#epoca_celo_aprox").hide();
+                }else if(sexo=='H'){
+                    var label1 = document.getElementsByTagName("label")[7];
+                    var label2 = document.getElementsByTagName("label")[8];
+                    label1.setAttribute("class","");
+                    label2.setAttribute("class","");
+                    $("#epoca_celo_real").show();
+                    $("#epoca_celo_aprox").show();
+                }
+                else{
+                    alert("Porfavor ingrese M o H en el campo sexo");
+                }
+
+            });
+           
+
+            //se pinta el calendario para cada campo
+            $( "#fecha_nacimiento" ).datepicker();
+            $( "#fecha_desparasitacion" ).datepicker();
+            $( "#fecha_desparasitacion" ).change(function(){
+                //convertir a dd/mm/aaaa
+                var fecha_des = $( "#fecha_desparasitacion" ).val();
+                var split = fecha_des.split("/");
+                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
+                $( "#fecha_desparasitacion" ).val(nueva_fecha);
+            });
+             
+        
+            //$( "#epoca_celo_aprox" ).datepicker();
+            $( "#epoca_celo_real" ).datepicker();
+        });
+    </script>
+{% endblock %}

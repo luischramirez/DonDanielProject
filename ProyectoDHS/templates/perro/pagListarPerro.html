@@ -1,7 +1,8 @@
 {% extends 'base/base.html'%}
 {% block tipo_accion %}Lista de perros{% endblock %}
 {% block content %} 
-    <table class="table table-bordered" style="overflow-x:scroll;">
+    <div style="overflow-x:scroll;">
+    <table class="table table-bordered">
     <thead>
         <tr>
             <td><strong>#</strong></td>
@@ -46,13 +47,13 @@
             <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
             <td>{{ perro.id_color.nombre }}</td>
             <td style="overflow-y:scroll">
-                {% if {{perro.id_horario_dieta.es_especial}} %}
+                {% if perro.id_horario_dieta.es_especial %}
                     <a class ="btn btn-primary" href = "#">Editar</a>
                 {% else %}
                     {{ perro.id_horario_dieta.id_dia.nombre }} {{ perro.id_horario_dieta.id_alimentacion.nombre }}
                 {% endif %}
             </td>
-            <td>{{ perro.estado_perruno }}</td>
+            <td>{{ perro.id_estado_perruno.nombre }}</td>
             <td>{{ perro.id_tamanio }}</td>
             <td>{{ perro.id_veterinario.nombre }}</td>
             <td>{{ perro.id_padre }}</td>
@@ -72,4 +73,5 @@
         {% endif %}
     </tbody>
 </table>
+    </div>
 {% endblock %}
