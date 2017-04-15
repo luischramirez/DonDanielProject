@@ -229,11 +229,7 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'Reserva'
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> 6ac63a65ce73e60e980c76ca3e5a1d7d3f4f4261
 class Raza(models.Model):
     """
     Clase encargada de representar la raza del perro 
