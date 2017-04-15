@@ -94,3 +94,39 @@ class RegistrarDieta(CreateView):
     template_name = 'perro/pagRegistroDieta.html'
     #se indica cual será la url de finalización
     success_url= reverse_lazy('perro:registrar_perro')
+
+class ActualizarInformacionPerro(UpdateView):
+    """
+    Clase encargada de actualizar la información del Perro en la base de datos
+    """
+    #se ingresa qué modelo se utilizará para la actualización de la información
+    model = Perro
+    #se indica que formulario va a dar soporte a la acción de actualización de la información
+    form_class = FormularioPerro 
+    #se indica que template va a gestionar el registro
+    template_name = 'perro/pagActualizarPerro.html'
+    #se indica cual será la url de finalización
+    success_url= reverse_lazy('perro:listar_perro')
+
+class EliminarPerro(DeleteView):
+    """
+    Clase encargada de eliminar el Perro de la base de datos
+    """
+    #se ingresa qué modelo se utilizará para el borrado de Perro
+    model = Perro
+    #se indica que template va a gestionar el borrado
+    template_name = 'Perro/pagEliminarPerro.html'
+    #se indica cual será la url de finalización
+    success_url=reverse_lazy('perro:listar_perro')
+
+class ListarPerro(ListView):
+    """
+    Clase encargada de listar los perros de la base de datos
+    """
+    #se ingresa qué modelo se utilizará para listar los perros
+    model = Perro
+    #se indica que template va a gestionar el listador de los perros
+    template_name = 'perro/pagListarPerro.html'
+    def get_queryset(self):
+        #pylint:disable=E1101
+        return self.model.objects.all().order_by('id')

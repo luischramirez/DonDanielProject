@@ -1,0 +1,75 @@
+{% extends 'base/base.html'%}
+{% block tipo_accion %}Lista de perros{% endblock %}
+{% block content %} 
+    <table class="table table-bordered" style="overflow-x:scroll;">
+    <thead>
+        <tr>
+            <td><strong>#</strong></td>
+            <td><strong>Nombre</strong></td>
+            <td><strong>Fecha de nacimiento</strong></td>
+            <td><strong>Edad</strong></td>
+            <td><strong>Sexo</strong></td>
+            <td><strong>Raza</strong></td>
+            <td><strong>Peso</strong></td>
+            <td><strong>Estado de salud</strong></td>
+            <td><strong>Fecha desparasitación</strong></td>
+            <td><strong>Época de celo real</strong></td>
+            <td><strong>Época de celo aproximada</strong></td>
+            <td><strong>Condiciones de préstamo</strong></td>
+            <td><strong>Color</strong></td>
+            <td><strong>Horario dieta</strong></td>
+            <td><strong>Estado perruno</strong></td>
+            <td><strong>Tamaño</strong></td>
+            <td><strong>Nombre veterinario</strong></td>
+            <td><strong>Nombre de padre</strong></td>
+            <td><strong>Nombre de madre</strong></td>
+            <td><strong>Nivel de entrenamiento</strong></td>
+            <td><strong>Nombre acudiente</strong></td>
+            <td><strong>Acciones</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for perro in object_list %}
+        <tr>
+            <td>{{ perro.id }}</td>
+            <td>{{ perro.nombre }}</td>
+            <td>{{ perro.fecha_nacimiento }}</td>
+            <td>{{ perro.edad }}</td>
+            <td>{{ perro.sexo }}</td>
+            <td>{{ perro.id_raza.nombre }}</td>
+            <td>{{ perro.peso }}</td>
+            <td>{{ perro.estado_salud }}</td>
+            <td>{{ perro.fecha_desparasitacion }}</td>
+            <td>{{ perro.epoca_celo_real }}</td>
+            <td>{{ perro.epoca_celo_aproximada }}</td>
+            <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
+            <td>{{ perro.id_color.nombre }}</td>
+            <td style="overflow-y:scroll">
+                {% if {{perro.id_horario_dieta.es_especial}} %}
+                    <a class ="btn btn-primary" href = "#">Editar</a>
+                {% else %}
+                    {{ perro.id_horario_dieta.id_dia.nombre }} {{ perro.id_horario_dieta.id_alimentacion.nombre }}
+                {% endif %}
+            </td>
+            <td>{{ perro.estado_perruno }}</td>
+            <td>{{ perro.id_tamanio }}</td>
+            <td>{{ perro.id_veterinario.nombre }}</td>
+            <td>{{ perro.id_padre }}</td>
+            <td>{{ perro.id_madre }}</td>
+            <td>{{ perro.id_nivel_entrenamiento.nombre }}</td>
+            <td>{{ perro.id_acudiente.nombre }}</td>
+            <td>
+			<!-- se coloca un link hacia la url donde se realiza la acción de editar y se manda como parámetro el id del acudiente-->
+                <a class ="btn btn-primary" href="{% url 'perro:actualizar_perro' perro.id%}">Editar</a>
+			<!-- se coloca un link hacia la url donde se realiza la acción de eliminar y se manda como parámetro el id del acudiente-->
+                <a class ="btn btn-danger" href="{% url 'perro:eliminar_perro' perro.id%}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            <h1>No hay registros de perros</h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

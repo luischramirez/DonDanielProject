@@ -227,10 +227,6 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'Reserva'
-<<<<<<< HEAD
-
-=======
->>>>>>> 3a0edf8b86c0928a0cb541a7ea058344aca9cb37
         
 class Raza(models.Model):
     """
