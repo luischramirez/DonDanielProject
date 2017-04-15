@@ -1,5 +1,5 @@
 from django import forms
-from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento,NivelEntrenamiento, HorarioDieta
+from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento,NivelEntrenamiento, HorarioDieta, Alimentacion
 
 
 class FormularioPerro(forms.ModelForm):
@@ -208,7 +208,7 @@ class FormularioNivelPersonalizado(forms.ModelForm):
 
 class FormularioDieta(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar los niveles personalizados de adiestramiento de un perro
+        Clase encargada de describir el formulario para gestionar la dieta de un perro
     """
     class Meta:
         model = HorarioDieta
@@ -224,4 +224,21 @@ class FormularioDieta(forms.ModelForm):
         widgets={
             'id_alimentacion':forms.Select(attrs={'class':'form-control', 'id':'alimentacion'}),
             'id_dia':forms.Select(attrs={'class':'form-control', 'id':'dia'}),
+        }
+
+class FormularioAlimentacion(forms.ModelForm):
+    """
+        Clase encargada de describir el formulario para gestionar la dieta de un perro
+    """
+    class Meta:
+        model = Alimentacion
+
+        fields=[
+            'nombre',
+        ]
+        labels={
+            'nombre':'Nombre',
+        }
+        widgets={
+            'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Escriba el nombre del producto'}),
         }

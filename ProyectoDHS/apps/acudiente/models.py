@@ -23,8 +23,10 @@ class Alimentacion(models.Model):
     """
     Clase encargada de representar la alimentación del perro 
     """
-    unidad_medida = models.ForeignKey('UnidadMedida', models.DO_NOTHING, db_column='unidad_medida')
-    fecha = models.DateField()
+    nombre = models.TextField()
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         managed = False
@@ -57,7 +59,6 @@ class Dia(models.Model):
     class Meta:
         managed = False
         db_table = 'Dia'
-
 
 class Ejercicio(models.Model):
     """
@@ -94,6 +95,7 @@ class HorarioDieta(models.Model):
     """
     id_alimentacion = models.ForeignKey(Alimentacion, models.DO_NOTHING, db_column='id_alimentacion')
     id_dia = models.ForeignKey(Dia, models.DO_NOTHING, db_column='id_dia')
+    tipo_dieta = models.BooleanField()
     
     class Meta:
         managed = False
@@ -227,10 +229,6 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'Reserva'
-<<<<<<< HEAD
-
-=======
->>>>>>> 3a0edf8b86c0928a0cb541a7ea058344aca9cb37
         
 class Raza(models.Model):
     """
@@ -273,19 +271,6 @@ class TipoReserva(models.Model):
         managed = False
         db_table = 'Tipo_reserva'
 
-
-class UnidadMedida(models.Model):
-    """
-    Clase encargada de representar la unidad de medida de la alimentación del perro 
-    """
-    nombre = models.TextField()
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        managed = False
-        db_table = 'Unidad_medida'
 
 class Veterinario(models.Model):
     """

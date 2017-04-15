@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from apps.perro.views import RegistrarPerro,RegistrarVeterinario,RegistrarMadre,RegistrarPadre,RegistrarSuplemento,RegistrarNivelPersonalizado, RegistrarDieta
+from apps.perro.views import RegistrarPerro,RegistrarVeterinario,RegistrarMadre,RegistrarPadre,RegistrarSuplemento,RegistrarNivelPersonalizado, RegistrarDieta, RegistrarAlimentacion
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^registrarSuplemento$',login_required(RegistrarSuplemento.as_view()), name='registrar_suplemento'),
     url(r'^registrarNivelPersonalizado$',login_required(RegistrarNivelPersonalizado.as_view()), name='registrar_nivel_personalizado'),
     url(r'^registrarDieta$',login_required(RegistrarDieta.as_view()), name='registrar_dieta'),
+    url(r'^registrarAlimentacion$',login_required(RegistrarAlimentacion.as_view()), name='registrar_alimentacion'),
 ]

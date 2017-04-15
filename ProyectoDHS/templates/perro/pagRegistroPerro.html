@@ -86,7 +86,7 @@
 
             $("#nivel").after("<button> <a href='{% url 'perro:registrar_nivel_personalizado'%}'> Agregar Nivel Personalizado </a> </button>");
             $("#veterinario").after("<button> <a href='{% url 'perro:registrar_veterinario'%}'> Agregar Veterinario </a></button>");
-            $("#dieta").after("<button> <a href='#'> Agregar Dieta </a> </button>");
+            $("#horario_dieta").after("<button> <a href='{% url 'perro:registrar_dieta'%}'> Agregar Dieta </a> </button>");
             $("#padre").after("<button> <a href='{% url 'perro:registrar_padre'%}'> Agregar Padre </a> </button>");
             $("#madre").after("<button> <a href='{% url 'perro:registrar_madre'%}'> Agregar Madre </a> </button>");
             $("#suplemento").after("<button><a href='{% url 'perro:registrar_suplemento'%}'> Agregar Suplemento </a> </button>");
