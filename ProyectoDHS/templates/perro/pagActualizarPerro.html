@@ -14,12 +14,7 @@
     <script>
         $( function() {
             $("#fecha_nacimiento").change(function(){
-                // convertir a dd/mm/aaaa               
-                var fecha_nac = $( "#fecha_nacimiento" ).val();
-                var split = fecha_nac.split("/");
-                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
-                $( "#fecha_nacimiento" ).val(nueva_fecha);
-
+                //edad
                 var values = $( "#fecha_nacimiento" ).val().split("/");
                 var dia = values[2];
                 var mes = values[1];
@@ -37,11 +32,6 @@
                 
             });
             $("#epoca_celo_real").change(function(){
-                //convertir a dd/mm/aaaa
-                var fecha_celo = $( "#epoca_celo_real" ).val();
-                var split = fecha_celo.split("/");
-                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
-                $( "#epoca_celo_real" ).val(nueva_fecha);
                 // calcular la nueva epoca de celo
                 var suma = 6;
                 var fechaReal = $("#epoca_celo_real").val();
@@ -57,6 +47,26 @@
                 var fechaNueva = fecha[0]+"/"+total+"/"+fecha[2];
                 $("#epoca_celo_aprox").val(fechaNueva);
             });
+            
+            //se verifica que sexo tiene actualmente
+            var verificarSexo =$("#sexo").val();
+            //se ocultan campos
+            if (verificarSexo=='M'){
+                var label1 = document.getElementsByTagName("label")[7];
+                var label2 = document.getElementsByTagName("label")[8];
+                label1.setAttribute("class","hidden");
+                label2.setAttribute("class","hidden");
+                $("#epoca_celo_real").hide();
+                $("#epoca_celo_aprox").hide();
+            }else if(sexo=='H'){
+                var label1 = document.getElementsByTagName("label")[7];
+                var label2 = document.getElementsByTagName("label")[8];
+                label1.setAttribute("class","");
+                label2.setAttribute("class","");
+                $("#epoca_celo_real").show();
+                $("#epoca_celo_aprox").show();
+            } 
+            //cuando se cambie el sexo
             $("#sexo").change(function(){
                 var sexo = $("#sexo").val();
                 if(sexo=='M'){
@@ -79,22 +89,44 @@
                 }
 
             });
-           
-
-            //se pinta el calendario para cada campo
-            $( "#fecha_nacimiento" ).datepicker();
-            $( "#fecha_desparasitacion" ).datepicker();
-            $( "#fecha_desparasitacion" ).change(function(){
-                //convertir a dd/mm/aaaa
-                var fecha_des = $( "#fecha_desparasitacion" ).val();
-                var split = fecha_des.split("/");
-                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
-                $( "#fecha_desparasitacion" ).val(nueva_fecha);
-            });
-             
+            //configuracion español datepicker
+           $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+                $.datepicker.setDefaults($.datepicker.regional['es']);
+                $(function () {
+                   //se pinta el calendario para cada campo
+                    $( "#fecha_nacimiento" ).datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                    });
+                    $( "#fecha_desparasitacion" ).datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                    });
+                    $( "#epoca_celo_real" ).datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                    });
+                });
         
-            //$( "#epoca_celo_aprox" ).datepicker();
-            $( "#epoca_celo_real" ).datepicker();
         });
     </script>
 {% endblock %}

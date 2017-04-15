@@ -15,7 +15,7 @@ class RegistrarPerro(CreateView):
     #se indica que template va a gestionar el registro
     template_name = 'perro/pagRegistroPerro.html'
     #se indica cual será la url de finalización
-    #success_url= reverse_lazy('acudiente:listar_acudiente')
+    success_url= reverse_lazy('perro:listar_perro')
 
 class RegistrarVeterinario(CreateView):
     """
