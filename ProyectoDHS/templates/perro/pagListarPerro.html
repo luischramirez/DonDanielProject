@@ -26,6 +26,8 @@
             <td><strong>Nombre y raza madre</strong></td>
             <td><strong>Nivel de entrenamiento</strong></td>
             <td><strong>Nombre acudiente</strong></td>
+            <td><strong>Suplementos</strong></td>
+            <td><strong>Vacunas</strong></td>
             <td><strong>Acciones</strong></td>
         </tr>
     </thead>
@@ -41,7 +43,11 @@
             <td>{{ perro.id_raza.nombre }}</td>
             <td>{{ perro.peso }}</td>
             <td>{{ perro.estado_salud }}</td>
+            {% if perro.fecha_desparasitacion %}
             <td>{{ perro.fecha_desparasitacion }}</td>
+            {% else %}
+            <td>Desconocida</td>
+            {% endif %}
             {% if perro.epoca_celo_real %}
             <td>{{ perro.epoca_celo_real }}</td>
             <td>{{ perro.epoca_celo_aproximada }}</td>
@@ -49,20 +55,57 @@
             <td> Ninguna </td>
             <td> Ninguna </td>
             {% endif %}
+            {% if perro.condiciones_prestamo %}
             <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
+            {% else %}
+            <td> Ninguna </td>
+            {% endif %}
             <td>{{ perro.id_color.nombre }}</td>
             <td style="overflow-y:scroll">
-                {% for perro in perro.horario_dieta.id_dia.nombre %}
-                    {{ perro.horario_dieta.id_dia.nombre }} {{ perro.horario_dieta.id_alimentacion.nombre }}
-                 {% endfor %}
+                
+                {% for iterador in perro.horario_dieta.all %}
+                    {{ iterador.id_dia.nombre }} - {{ iterador.id_alimentacion.nombre }} 
+                {% endfor %}
+
             </td>
             <td>{{ perro.id_estado_perruno.nombre }}</td>
             <td>{{ perro.id_tamanio }}</td>
+            {% if  perro.id_veterinario %}
             <td>{{ perro.id_veterinario.nombre }}</td>
+            {% else %}
+            <td> Ninguno </td>
+            {% endif %}
+
+            {% if  perro.id_padre %}
             <td>{{ perro.id_padre }} - {{perro.id_padre.id_raza}}</td>
+            {% else %}
+            <td> Desconocido </td>
+            {% endif %}
+            {% if  perro.id_madre %}
             <td>{{ perro.id_madre }} - {{perro.id_padre.id_raza}}</td>
+            {%else%}
+            <td> Desconocida </td>
+            {% endif %}
             <td>{{ perro.id_nivel_entrenamiento.nombre }}</td>
             <td>{{ perro.id_acudiente.nombre }}</td>
+            <td>
+                {% if  perro.vacuna.all %}
+                {% for iterador in perro.vacuna.all %}
+                    {{ iterador.nombre }} 
+                {% endfor %}
+                {% else %}
+                 Ninguna
+                {% endif %}
+            </td>
+            <td>
+                {% if  perro.suplemento.all %}
+                {% for iterador in perro.suplemento.all %}
+                    {{ iterador.nombre }} 
+                {% endfor %}
+                {% else %}
+                 Ninguna
+                {% endif %}
+            </td>
             <td>
 			<!-- se coloca un link hacia la url donde se realiza la acción de editar y se manda como parámetro el id del acudiente-->
                 <a class ="btn btn-primary" href="{% url 'perro:actualizar_perro' perro.id%}">Editar</a>
