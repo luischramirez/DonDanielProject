@@ -15,25 +15,37 @@
 {% block js %}
     
     <script>
-         $("#fecha_entrada").change(function(){
-                //convertir a dd/mm/aaaa
-                var fecha_entrada = $( "#fecha_entrada" ).val();
-                var split = fecha_entrada.split("/");
-                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
-                $( "#fecha_entrada" ).val(nueva_fecha);
-        });
-        $("#fecha_salida").change(function(){
-                //convertir a dd/mm/aaaa
-                var fecha_salida = $( "#fecha_salida" ).val();
-                var split = fecha_salida.split("/");
-                var nueva_fecha = split[1]+"/"+split[0]+"/"+split[2];
-                $( "#fecha_salida" ).val(nueva_fecha);
-        });
-
-        $( function() {
-            //se pinta el calendario para cada campo
-            $( "#fecha_entrada" ).datepicker();
-            $( "#fecha_salida" ).datepicker();
-        });
+         //configuracion español datepicker
+           $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+                $.datepicker.setDefaults($.datepicker.regional['es']);
+                $(function () {
+                   //se pinta el calendario para cada campo
+                    $( "#fecha_entrada" ).datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                    });
+                    $( "#fecha_salida" ).datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                    });
+                });
     </script>
 {% endblock %}

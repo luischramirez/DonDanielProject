@@ -1,7 +1,8 @@
 {% extends 'base/base.html'%}
 {% block tipo_accion %}Lista de perros{% endblock %}
 {% block content %} 
-    <table class="table table-bordered" style="overflow-x:scroll;">
+    <div style="overflow-x:scroll;">
+    <table class="table table-bordered">
     <thead>
         <tr>
             <td><strong>#</strong></td>
@@ -21,8 +22,8 @@
             <td><strong>Estado perruno</strong></td>
             <td><strong>Tamaño</strong></td>
             <td><strong>Nombre veterinario</strong></td>
-            <td><strong>Nombre de padre</strong></td>
-            <td><strong>Nombre de madre</strong></td>
+            <td><strong>Nombre y raza padre</strong></td>
+            <td><strong>Nombre y raza madre</strong></td>
             <td><strong>Nivel de entrenamiento</strong></td>
             <td><strong>Nombre acudiente</strong></td>
             <td><strong>Acciones</strong></td>
@@ -41,22 +42,27 @@
             <td>{{ perro.peso }}</td>
             <td>{{ perro.estado_salud }}</td>
             <td>{{ perro.fecha_desparasitacion }}</td>
+            {% if perro.epoca_celo_real %}
             <td>{{ perro.epoca_celo_real }}</td>
             <td>{{ perro.epoca_celo_aproximada }}</td>
+            {% else %}
+            <td> Ninguna </td>
+            <td> Ninguna </td>
+            {% endif %}
             <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
             <td>{{ perro.id_color.nombre }}</td>
             <td style="overflow-y:scroll">
-                {% if {{perro.id_horario_dieta.es_especial}} %}
+                {% if perro.horario_dieta.tipo_dieta == 'si' %}
                     <a class ="btn btn-primary" href = "#">Editar</a>
                 {% else %}
-                    {{ perro.id_horario_dieta.id_dia.nombre }} {{ perro.id_horario_dieta.id_alimentacion.nombre }}
+                    {{ perro.horario_dieta.id_dia.nombre }} {{ perro.horario_dieta.id_alimentacion.nombre }}
                 {% endif %}
             </td>
-            <td>{{ perro.estado_perruno }}</td>
+            <td>{{ perro.id_estado_perruno.nombre }}</td>
             <td>{{ perro.id_tamanio }}</td>
             <td>{{ perro.id_veterinario.nombre }}</td>
-            <td>{{ perro.id_padre }}</td>
-            <td>{{ perro.id_madre }}</td>
+            <td>{{ perro.id_padre }} - {{perro.id_padre.id_raza}}</td>
+            <td>{{ perro.id_madre }} - {{perro.id_padre.id_raza}}</td>
             <td>{{ perro.id_nivel_entrenamiento.nombre }}</td>
             <td>{{ perro.id_acudiente.nombre }}</td>
             <td>
@@ -72,4 +78,5 @@
         {% endif %}
     </tbody>
 </table>
+    </div>
 {% endblock %}
