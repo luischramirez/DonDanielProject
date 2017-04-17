@@ -52,11 +52,9 @@
             <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
             <td>{{ perro.id_color.nombre }}</td>
             <td style="overflow-y:scroll">
-                {% if perro.horario_dieta.tipo_dieta == 'si' %}
-                    <a class ="btn btn-primary" href = "#">Editar</a>
-                {% else %}
+                {% for perro in perro.horario_dieta.id_dia.nombre %}
                     {{ perro.horario_dieta.id_dia.nombre }} {{ perro.horario_dieta.id_alimentacion.nombre }}
-                {% endif %}
+                 {% endfor %}
             </td>
             <td>{{ perro.id_estado_perruno.nombre }}</td>
             <td>{{ perro.id_tamanio }}</td>
