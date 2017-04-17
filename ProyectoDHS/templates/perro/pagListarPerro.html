@@ -26,6 +26,8 @@
             <td><strong>Nombre y raza madre</strong></td>
             <td><strong>Nivel de entrenamiento</strong></td>
             <td><strong>Nombre acudiente</strong></td>
+            <td><strong>Suplementos</strong></td>
+            <td><strong>Vacunas</strong></td>
             <td><strong>Acciones</strong></td>
         </tr>
     </thead>
@@ -52,11 +54,9 @@
             <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
             <td>{{ perro.id_color.nombre }}</td>
             <td style="overflow-y:scroll">
-                {% if perro.horario_dieta.tipo_dieta == 'si' %}
-                    <a class ="btn btn-primary" href = "#">Editar</a>
-                {% else %}
-                    {{ perro.horario_dieta.id_dia.nombre }} {{ perro.horario_dieta.id_alimentacion.nombre }}
-                {% endif %}
+                {% for iterador in perro.horario_dieta.all %}
+                    {{ iterador.id_dia.nombre }} - {{ iterador.id_alimentacion.nombre }} 
+                {% endfor %}
             </td>
             <td>{{ perro.id_estado_perruno.nombre }}</td>
             <td>{{ perro.id_tamanio }}</td>
@@ -65,6 +65,16 @@
             <td>{{ perro.id_madre }} - {{perro.id_padre.id_raza}}</td>
             <td>{{ perro.id_nivel_entrenamiento.nombre }}</td>
             <td>{{ perro.id_acudiente.nombre }}</td>
+            <td>
+                {% for iterador in perro.vacuna.all %}
+                    {{ iterador.nombre }} 
+                {% endfor %}
+            </td>
+            <td>
+                {% for iterador in perro.suplemento.all %}
+                    {{ iterador.nombre }} 
+                {% endfor %}
+            </td>
             <td>
 			<!-- se coloca un link hacia la url donde se realiza la acción de editar y se manda como parámetro el id del acudiente-->
                 <a class ="btn btn-primary" href="{% url 'perro:actualizar_perro' perro.id%}">Editar</a>
