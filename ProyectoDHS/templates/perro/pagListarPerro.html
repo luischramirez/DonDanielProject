@@ -43,31 +43,35 @@
             <td>{{ perro.id_raza.nombre }}</td>
             <td>{{ perro.peso }}</td>
             <td>{{ perro.estado_salud }}</td>
+
             {% if perro.fecha_desparasitacion %}
-            <td>{{ perro.fecha_desparasitacion }}</td>
+                <td>{{ perro.fecha_desparasitacion }}</td>
             {% else %}
-            <td>Desconocida</td>
+                <td>Desconocida</td>
             {% endif %}
+
             {% if perro.epoca_celo_real %}
-            <td>{{ perro.epoca_celo_real }}</td>
-            <td>{{ perro.epoca_celo_aproximada }}</td>
+                <td>{{ perro.epoca_celo_real }}</td>
+                <td>{{ perro.epoca_celo_aproximada }}</td>
             {% else %}
-            <td> Ninguna </td>
-            <td> Ninguna </td>
+                <td> Ninguna </td>
+                <td> Ninguna </td>
             {% endif %}
+
             {% if perro.condiciones_prestamo %}
-            <td style="overflow-y:scroll">{{ perro.condiciones_prestamo }}</td>
+                <td style="overflow-y:scroll; height:100; white-space:nowrap;">{{ perro.condiciones_prestamo }}</td>
             {% else %}
-            <td> Ninguna </td>
+                <td> Ninguna </td>
             {% endif %}
+
             <td>{{ perro.id_color.nombre }}</td>
-            <td style="overflow-y:scroll">
-                
+
+            <td style="overflow-y:scroll; height:100; white-space:nowrap;">
                 {% for iterador in perro.horario_dieta.all %}
                     {{ iterador.id_dia.nombre }} - {{ iterador.id_alimentacion.nombre }} 
                 {% endfor %}
-
             </td>
+
             <td>{{ perro.id_estado_perruno.nombre }}</td>
             <td>{{ perro.id_tamanio }}</td>
             {% if  perro.id_veterinario %}
