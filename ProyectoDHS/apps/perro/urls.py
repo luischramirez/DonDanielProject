@@ -1,7 +1,5 @@
 from django.conf.urls import url
-from apps.perro.views import RegistrarPerro,RegistrarVeterinario,RegistrarMadre,RegistrarPadre,RegistrarSuplemento,RegistrarNivelPersonalizado, RegistrarDieta, RegistrarAlimentacion
-from apps.perro.views import RegistrarPerro,RegistrarVeterinario,RegistrarMadre,RegistrarPadre,RegistrarSuplemento,RegistrarNivelPersonalizado, RegistrarDieta, ListarPerro, ActualizarInformacionPerro, EliminarPerro
-
+from apps.perro.views import RegistrarPerro,RegistrarVeterinario,RegistrarMadre,RegistrarPadre,RegistrarSuplemento,RegistrarNivelPersonalizado,RegistrarDieta,RegistrarAlimentacion,ListarPerro,ActualizarInformacionPerro,EliminarPerro
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [

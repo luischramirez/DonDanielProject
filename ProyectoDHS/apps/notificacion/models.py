@@ -1,6 +1,5 @@
 from django.db import models
 
-    
 class Acudiente(models.Model):
     """
     Clase encargada de representar el acudiente del perro 
@@ -18,7 +17,6 @@ class Acudiente(models.Model):
         managed = False
         db_table = 'Acudiente'
 
-
 class Alimentacion(models.Model):
     """
     Clase encargada de representar la alimentación del perro 
@@ -32,7 +30,6 @@ class Alimentacion(models.Model):
         managed = False
         db_table = 'Alimentacion'
 
-
 class Color(models.Model):
     """
     Clase encargada de representar el color del perro 
@@ -45,7 +42,6 @@ class Color(models.Model):
     class Meta:
         managed = False
         db_table = 'Color'
-
 
 class Dia(models.Model):
     """
@@ -74,7 +70,6 @@ class Ejercicio(models.Model):
         managed = False
         db_table = 'Ejercicio'
 
-
 class EstadoPerruno(models.Model):
     """
     Clase encargada de representar el estado del perro (reservado, apto para rescate, apto para busqueda) 
@@ -87,7 +82,6 @@ class EstadoPerruno(models.Model):
     class Meta:
         managed = False
         db_table = 'Estado_perruno'
-
 
 class HorarioDieta(models.Model):
     """
@@ -105,7 +99,6 @@ class HorarioDieta(models.Model):
         managed = False
         db_table = 'Horario_dieta'
 
-
 class Madre(models.Model):
     """
     Clase encargada de representar la madre de un perro 
@@ -122,7 +115,6 @@ class Madre(models.Model):
         managed = False
         db_table = 'Madre'
 
-
 class NivelEntrenamiento(models.Model):
     """
     Clase encargada de representar el nivel de entrenamiento de un perro 
@@ -137,7 +129,6 @@ class NivelEntrenamiento(models.Model):
     class Meta:
         managed = False
         db_table = 'Nivel_entrenamiento'
-
 
 class Padre(models.Model):
     """
@@ -167,8 +158,7 @@ class Suplemento(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Suplemento'      
-
+        db_table = 'Suplemento'
 
 class Vacuna(models.Model):
     """
@@ -182,7 +172,6 @@ class Vacuna(models.Model):
     class Meta:
         managed = False
         db_table = 'Vacuna'
-
 
 class Perro(models.Model):
     """
@@ -218,7 +207,6 @@ class Perro(models.Model):
         managed = False
         db_table = 'Perro'
 
-
 class Reserva(models.Model):
     """
     Clase encargada de representar la reserva de un perro 
@@ -247,7 +235,6 @@ class Raza(models.Model):
         managed = False
         db_table = 'Raza'
 
-
 class Tamanio(models.Model):
     """
     Clase encargada de representar el tamaño del perro 
@@ -260,7 +247,6 @@ class Tamanio(models.Model):
     class Meta:
         managed = False
         db_table = 'Tamanio'
-
 
 class TipoReserva(models.Model):
     """
@@ -275,7 +261,6 @@ class TipoReserva(models.Model):
         managed = False
         db_table = 'Tipo_reserva'
 
-
 class Veterinario(models.Model):
     """
     Clase encargada de representar el veterinario del perro 
@@ -287,7 +272,7 @@ class Veterinario(models.Model):
 
     def __str__(self):
         return self.nombre
-        
+
     class Meta:
         managed = False
         db_table = 'Veterinario'

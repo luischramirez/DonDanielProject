@@ -4,7 +4,7 @@ from apps.reserva.models import TipoReserva
 
 class FormularioReserva(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar las reservas
+    Clase encargada de describir el formulario para gestionar las reservas
     """
     class Meta:
         model = Reserva

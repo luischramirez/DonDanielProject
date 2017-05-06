@@ -1,10 +1,9 @@
 from django import forms
 from apps.perro.models import Perro, Veterinario, Madre, Padre, Suplemento,NivelEntrenamiento, HorarioDieta, Alimentacion
 
-
 class FormularioPerro(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar los perros
+    Clase encargada de describir el formulario para gestionar los perros
     """
 
     class Meta:
@@ -59,7 +58,7 @@ class FormularioPerro(forms.ModelForm):
             'horario_dieta': 'Dietas',
         }
 
-        widgets = { 
+        widgets = {
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
             'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
@@ -82,13 +81,11 @@ class FormularioPerro(forms.ModelForm):
             'suplemento': forms.CheckboxSelectMultiple(attrs={'id':'suplemento'}),
             'vacuna': forms.CheckboxSelectMultiple(),
             'horario_dieta': forms.CheckboxSelectMultiple(attrs={'id':'horario_dieta'}),
-            
-            
         }
 
 class FormularioVeterinario(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar los veterinarios
+    Clase encargada de describir el formulario para gestionar los veterinarios
     """
     class Meta:
         model = Veterinario
@@ -114,7 +111,7 @@ class FormularioVeterinario(forms.ModelForm):
 
 class FormularioMadre(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar las madres de los perros
+    Clase encargada de describir el formulario para gestionar las madres de los perros
     """
     class Meta:
         model = Madre
@@ -140,7 +137,7 @@ class FormularioMadre(forms.ModelForm):
 
 class FormularioPadre(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar los padres de los perros
+    Clase encargada de describir el formulario para gestionar los padres de los perros
     """
     class Meta:
         model = Padre
@@ -166,7 +163,7 @@ class FormularioPadre(forms.ModelForm):
 
 class FormularioSuplemento(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar los suplementos de un perro
+    Clase encargada de describir el formulario para gestionar los suplementos de un perro
     """
     class Meta:
         model = Suplemento
@@ -186,7 +183,7 @@ class FormularioSuplemento(forms.ModelForm):
 
 class FormularioNivelPersonalizado(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar los niveles personalizados de adiestramiento de un perro
+    Clase encargada de describir el formulario para gestionar los niveles personalizados de adiestramiento de un perro
     """
     class Meta:
         model = NivelEntrenamiento
@@ -209,7 +206,7 @@ class FormularioNivelPersonalizado(forms.ModelForm):
 
 class FormularioDieta(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar la dieta de un perro
+    Clase encargada de describir el formulario para gestionar la dieta de un perro
     """
     class Meta:
         model = HorarioDieta
@@ -235,7 +232,7 @@ class FormularioDieta(forms.ModelForm):
 
 class FormularioAlimentacion(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar la dieta de un perro
+    Clase encargada de describir el formulario para gestionar la dieta de un perro
     """
     class Meta:
         model = Alimentacion
