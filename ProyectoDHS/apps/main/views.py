@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from gi.repository import Notify
-from apps.main.models import Alimentacion, Perro
+"""from gi.repository import Notify
+from apps.main.models import Alimentacion, Perro"""
 
 # Create your views here.
 def index(request):
     #renderizo o muestro la plantilla de mascotas que tengo
     return render(request, 'main/index.html')
 
-Notify.init("main")
+"""Notify.init("main")
 
 def notify():
     
@@ -18,3 +18,4 @@ def notify():
 
 if __name__ == '__main__':
     notify()
+"""

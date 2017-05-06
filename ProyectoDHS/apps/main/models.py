@@ -207,8 +207,8 @@ class Perro(models.Model):
     id_estado_perruno = models.ForeignKey(EstadoPerruno, models.DO_NOTHING, db_column='id_estado_perruno')
     id_acudiente = models.ForeignKey(Acudiente, models.DO_NOTHING, db_column='id_acudiente')
     id_tamanio = models.ForeignKey('Tamanio', models.DO_NOTHING, db_column='id_tamanio')
-    suplemento = models.ManyToManyField(Suplemento,blank=True, null=True)
-    vacuna = models.ManyToManyField(Vacuna,blank=True, null=True)
+    suplemento = models.ManyToManyField(Suplemento)
+    vacuna = models.ManyToManyField(Vacuna)
     horario_dieta = models.ManyToManyField(HorarioDieta)
 
     def __str__(self):
