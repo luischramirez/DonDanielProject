@@ -16,7 +16,7 @@ class Acudiente(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Acudiente'
+        db_table = "Acudiente"
 
 
 class Alimentacion(models.Model):
