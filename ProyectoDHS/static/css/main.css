@@ -1299,4 +1299,8 @@ outline: 0;
 	float: right;
 }
 
-
+#noestirable{
+  overflow-y:scroll;
+  height: 18240184;
+  white-space: nowrap;
+}

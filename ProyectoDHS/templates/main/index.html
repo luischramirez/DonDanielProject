@@ -62,13 +62,6 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown">Recursos<i class="icon-angle-down"></i></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Registrar</a></li>
-							<li><a href="#">Listar</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Reservas<i class="icon-angle-down"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="{% url 'reserva:registrar_reserva'%}">Registrar</a></li>
@@ -82,6 +75,9 @@
 	</header><!--/header-->	
 
 	<div class="notificaciones">
+		{% block notificaciones %} 
+		{% endblock %}
+
 		salkdaksd<br/>
 		salkdaksd<br/>
 		salkdaksd<br/>

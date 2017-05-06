@@ -116,7 +116,7 @@ class ActualizarInformacionPerro(UpdateView):
     #se ingresa qué modelo se utilizará para la actualización de la información
     model = Perro
     #se indica que formulario va a dar soporte a la acción de actualización de la información
-    form_class = FormularioPerro 
+    form_class = FormularioPerro
     #se indica que template va a gestionar el registro
     template_name = 'perro/pagActualizarPerro.html'
     #se indica cual será la url de finalización
@@ -144,4 +144,3 @@ class ListarPerro(ListView):
     def get_queryset(self):
         #pylint:disable=E1101
         return self.model.objects.all().order_by('id')
-
