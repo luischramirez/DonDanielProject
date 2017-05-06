@@ -78,8 +78,6 @@ WSGI_APPLICATION = 'ProyectoDHS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-<<<<<<< HEAD
-=======
 """
 >>>>>>> e559fa540129d295175f6e62b65ece894404c2d2
 DATABASES = {
