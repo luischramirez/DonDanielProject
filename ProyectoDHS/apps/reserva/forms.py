@@ -4,7 +4,7 @@ from apps.reserva.models import TipoReserva
 
 class FormularioReserva(forms.ModelForm):
     """
-        Clase encargada de describir el formulario para gestionar las reservas
+    Clase encargada de describir el formulario para gestionar las reservas
     """
     class Meta:
         model = Reserva
@@ -25,8 +25,7 @@ class FormularioReserva(forms.ModelForm):
             'fecha_salida': 'Fecha de salida',
             'precio_aproximado': 'Precio aproximado',
         }
-        
-        widgets = { 
+        widgets = {
             'perro': forms.Select(attrs={'class':'form-control','id':'perro'}),
             'tipo_reserva': forms.Select(attrs={'class':'form-control','id':'tipo_reserva'}),
             'fecha_entrada': forms.TextInput(attrs={'class':'datepicker form-control', 'id':'fecha_entrada'}),
