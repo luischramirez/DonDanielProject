@@ -24,7 +24,7 @@ class ActualizarInformacionAcudiente(UpdateView):
     #se ingresa qué modelo se utilizará para la actualización de la información
     model = Acudiente
     #se indica que formulario va a dar soporte a la acción de actualización de la información
-    form_class = FormularioAcudiente 
+    form_class = FormularioAcudiente
     #se indica que template va a gestionar el registro
     template_name = 'acudiente/pagActualizarAcudiente.html'
     #se indica cual será la url de finalización

@@ -1,6 +1,5 @@
 from apps.reserva.forms import FormularioReserva
 from apps.reserva.models import Reserva
-from apps.reserva.models import TipoReserva
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 # Create your views here.
@@ -20,7 +19,7 @@ class RegistrarReserva(CreateView):
 
 class ListarReserva(ListView):
     """
-    Clase encargada de listar las reserva de los perros 
+    Clase encargada de listar las reserva de los perros
     """
     #se ingresa qué modelo se utilizará para el registro
     model = Reserva

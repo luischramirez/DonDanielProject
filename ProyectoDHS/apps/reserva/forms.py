@@ -1,6 +1,5 @@
 from django import forms
 from apps.reserva.models import Reserva
-from apps.reserva.models import TipoReserva
 
 class FormularioReserva(forms.ModelForm):
     """

@@ -1,12 +1,11 @@
 from django.test import TestCase
-import sys
-#pylint:disable=E0401
 from apps.acudiente.models import Acudiente
 
 # Create your tests here.
 class AcudienteTestCase(TestCase):
     """
-    Clase encargada de probar las funcionalidades de: registro, actualización, borrado y consulta de Acudientes
+    Clase encargada de probar las funcionalidades de: registro,
+    actualización, borrado y consulta de Acudientes
     """
     def setUp(self):
         """
@@ -27,4 +26,4 @@ class AcudienteTestCase(TestCase):
         acudiente1 = Acudiente.objects.get(nombre='Fernando')
 
         acudiente1 = Acudiente.objects.get(nombre="Fernando")
-        self.assertTrue(acudiente1) 
+        self.assertTrue(acudiente1)
