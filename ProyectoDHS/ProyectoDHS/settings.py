@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'ProyectoDHS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -93,6 +93,7 @@ DATABASES = {
     }
 }
 
+"""
 """
 DATABASES = {
     'default': {
@@ -106,7 +107,7 @@ DATABASES = {
 }
 """
 
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -117,7 +118,7 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
