@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'apps.acudiente',
     'apps.main',
     'apps.perro',
-    'apps.notificacion',
     'apps.reserva',
 ]
 
