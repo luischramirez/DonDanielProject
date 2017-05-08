@@ -75,83 +75,27 @@
 	</header><!--/header-->	
 
 	<div class="notificaciones">
+		
+		salkdaksd<br/>
+		salkdaksd<br/><br/>
+		<tbody>
+			
 		{% block notificaciones %} 
+		{% if perros %}
+		{% for perro in perros%}
+				{% for iterador in perro.horario_dieta.all %}
+				<tr>
+   				<td> Recuerde que {{perro.nombre}} se alimenta de {{ iterador.id_alimentacion.nombre }} - {{ iterador.id_dia.nombre }} </td>
+				</br>  
+				<td><button>Atender</button></td>
+				</tr>
+				<br/><br/>
+                {% endfor %}
+		{% endfor %}
+		{% endif %}
 		{% endblock %}
-
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
-		salkdaksd<br/>
+		
+		</tbody>		
 	</div>
 		 
 	<div class="pagina">
