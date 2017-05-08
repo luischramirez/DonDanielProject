@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.perro.models import Perro, Acudiente
+from apps.perro.models import Perro
 # Create your views here.
 def index(request):
     perro = Perro.objects.all()
