@@ -89,11 +89,13 @@
 		{% endfor %}
 		{% endif %}
 		
+		
 		</table>
 
 		<table id="tepocacelo">
 			<!-- se agrega las epocas de celo de las perras y se colocan en un parrafo al que se le hará split-->
 		<p id="epocacelo" style ="display:none;">{%for perro in perros%}{% if perro.epoca_celo_aproximada %}{{perro.epoca_celo_aproximada}} - {{perro.nombre}} ;{% endif %}{% endfor %}</p>
+		<!--<p id="fechareserva" style ="display:none;">{%for reserva in reservas%}{% if reserva.perros %} {{perro.epoca_celo_aproximada}} - {{perro.nombre}} ;{% endif %}{% endfor %}</p>-->
 		</table>
 		{% endblock %}
 				
@@ -201,82 +203,6 @@
 	</div>
 		<script src="{% static 'js/jquery-1.12.4.js'%}"></script>
         <script src="{% static 'js/bootstrap.min.js'%}"></script>
-		<script>
-			var dia = new Date(),
-            hora = dia.getHours(),
-            minuto = dia.getMinutes();
-			//se valida la hora en que debería mostrar las dietas (entre las 10 am - 12 pm y entre las 4 y 6 pm)
-			//if ((hora<10) || (hora>12 && hora<16) || (hora>18)){
-			//	$("#tdieta").hide();	
-			//}
-			
-			var parrafoEpoca = document.getElementById("epocacelo").innerHTML;
-			//Mes
-			var split = parrafoEpoca.split(";");
-			//nombre
-			var nombreSplit = [];
-			//fecha 
-			var fechaSplit = [];
-
-			for(var i = 0; i < split.length - 1; i++){
-				arreglo = split[i].split(" ");
-				nombreSplit[i] = arreglo[6];
-				var mes = 0;
-				switch(arreglo[2]){
-					case "Enero": 
-						mes = 01; break;
-					case "Febrero": 
-						mes = 02; break;
-					case "Marzo": 
-						mes = 03; break;
-					case "Abril": 
-						mes = 04; break;
-					case "Mayo": 
-						mes = 05; break;
-					case "Junio": 
-						mes = 06; break;
-					case "Julio": 
-						mes = 07; break;
-					case "Agosto": 
-						mes = 08; break;
-					case "Septiembre": 
-						mes = 09; break;
-					case "Octubre": 
-						mes = 10; break;
-					case "Noviembre": 
-						mes = 11; break;
-					case "Diciembre": 
-						mes = 12; break;
-				}
-				fechaSplit[i] = split[i];
-				split[i] = mes;
-				
-			}
-			var tabla = document.getElementById("tepocacelo");
-			mes = dia.getMonth() + 1;
-			for(var i = 0; i < split.length - 1; i++){
-				if((split[i]) == (mes + 1)){
-					var tr = document.createElement("tr");
-					var td = document.createElement("td");
-					var trBtn = document.createElement("tr");
-					var tdBtn = document.createElement("td");
-					var btn = document.createElement("button");
-					btn.setAttribute("class","btn btn-primary " + "ec"+i);
-					btn.setAttribute("onClick","atender('" + "ec"+i + "')");
-					btn.innerHTML = "Atender";
-					tr.setAttribute("class","ec"+i);
-					td.innerHTML="Recuerde que " + nombreSplit[i] + " entrará a epoca de celo el " + fechaSplit[i] + " estar atento a los suplementos necesarios";
-					trBtn.appendChild(tdBtn);
-					tdBtn.appendChild(btn);
-					tr.appendChild(td);
-					tabla.appendChild(tr);
-					tabla.appendChild(trBtn);					
-				}
-			}
-
-			function atender(id){
-				$('.'+id+'').remove();	
-			}
-		</script>	
+		<script src="{% static 'js/presentarNotificaciones.js'%}"></script>
 </body>
 </html>

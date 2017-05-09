@@ -25,6 +25,7 @@
             <td><strong>Nombre y raza padre</strong></td>
             <td><strong>Nombre y raza madre</strong></td>
             <td><strong>Nivel de entrenamiento</strong></td>
+            <td><strong>Ejercicios adiestramiento</strong></td>
             <td><strong>Nombre acudiente</strong></td>
             <td><strong>Vacunas</strong></td>
             <td><strong>Suplementos</strong></td>
@@ -91,6 +92,15 @@
             <td> Desconocida </td>
             {% endif %}
             <td>{{ perro.id_nivel_entrenamiento.nombre }}</td>
+            <td>
+                {% if  perro.id_nivel_entrenamiento.ejercicios.all %}
+                {% for iterador in perro.id_nivel_entrenamiento.ejercicios.all %}
+                    {{ iterador.nombre }} 
+                {% endfor %}
+                {% else %}
+                 Ninguno
+                {% endif %}
+            </td>
             <td>{{ perro.id_acudiente.nombre }}</td>
             <td>
                 {% if  perro.vacuna.all %}
