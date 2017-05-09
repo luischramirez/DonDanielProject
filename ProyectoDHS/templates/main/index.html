@@ -75,23 +75,19 @@
 	</header><!--/header-->	
 
 	<div class="notificaciones">
-		<table id="tdieta">
-		{% block notificaciones %} 
-		{% if perros %}
-		{% for perro in perros%}
-				{% for iterador in perro.horario_dieta.all %}
-				
-				<tr  class="{{perro.id}}">
-					<td> Recuerde que {{perro.nombre}} se alimenta de {{ iterador.id_alimentacion.nombre }} - {{ iterador.id_dia.nombre }} </td>
-					<tr><td><button class="btn btn-primary {{perro.id}}" onClick="atender('{{perro.id}}')">Atender</button></td></tr>
-				</tr>
-                {% endfor %}
-		{% endfor %}
-		{% endif %}
-		
-		
-		</table>
-
+			<table id="tdieta" >
+			{% block notificaciones %} 
+			{% if perros %}
+			{% for perro in perros%}
+					{% for iterador in perro.horario_dieta.all %}
+						<tr  class="{{perro.id}}" style='border-style:dashed; border-color:#4d94ff;'>
+							<td> Recuerde que {{perro.nombre}} se alimenta de {{ iterador.id_alimentacion.nombre }} - {{ iterador.id_dia.nombre }} </td>
+							<tr><td><button class="btn btn-primary {{perro.id}}" onClick="atender('{{perro.id}}')">Atender</button></td></tr>
+						</tr>
+					{% endfor %}
+			{% endfor %}
+			{% endif %}
+			</table>
 		<table id="tepocacelo">
 			<!-- se agrega las epocas de celo de las perras y se colocan en un parrafo al que se le hará split-->
 		<p id="epocacelo" style ="display:none;">{%for perro in perros%}{% if perro.epoca_celo_aproximada %}{{perro.epoca_celo_aproximada}} - {{perro.nombre}} ;{% endif %}{% endfor %}</p>

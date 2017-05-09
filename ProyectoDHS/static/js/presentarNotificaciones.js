@@ -62,6 +62,8 @@
 			btn.setAttribute("onClick","atender('" + "ec"+i + "')");
 			btn.innerHTML = "Atender";
 			tr.setAttribute("class","ec"+i);
+			td.style.border = "dashed";
+			//tr.setAttribute("style","border-style:dashed");
             var fecha = fechaSplit[i].split("-");
 			td.innerHTML="Recuerde que " + nombreSplit[i] + " entra a epoca de celo el " + fecha[0] + ", estar atento a los suplementos necesarios";
 			trBtn.appendChild(tdBtn);
