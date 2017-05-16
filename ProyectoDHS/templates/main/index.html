@@ -90,8 +90,11 @@
 			</table>
 		<table id="tepocacelo">
 			<!-- se agrega las epocas de celo de las perras y se colocan en un parrafo al que se le hará split-->
-		<p id="epocacelo" style ="display:none;">{%for perro in perros%}{% if perro.epoca_celo_aproximada %}{{perro.epoca_celo_aproximada}} - {{perro.nombre}} ;{% endif %}{% endfor %}</p>
-		<!--<p id="fechareserva" style ="display:none;">{%for reserva in reservas%}{% if reserva.perros %} {{perro.epoca_celo_aproximada}} - {{perro.nombre}} ;{% endif %}{% endfor %}</p>-->
+			<p id="epocacelo" style ="display:none;">{%for perro in perros%}{% if perro.epoca_celo_aproximada %}{{perro.epoca_celo_aproximada}} - {{perro.nombre}} ;{% endif %}{% endfor %}</p>
+		</table>
+		<table id="tfechareserva">
+			<!-- se agrega los datos necesarios de fecha reserva-->
+			<p id="fechareserva" style = "display:none">{%for reserva in reservas%}{% if reserva %}{{reserva.fecha_salida}} {{reserva.perro}} {{reserva.tipo_reserva}} ;{% endif %}{% endfor %}</p>
 		</table>
 		{% endblock %}
 				
