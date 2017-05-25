@@ -77,7 +77,7 @@
 			fechaCamada = diaCamada[i] + "/"+ mesCamada + "/" + anio[i];
 			//tr.setAttribute("style","border-style:dashed");
             var fecha = fechaSplit[i].split("-");
-			td.innerHTML="Recuerde que " + nombreSplit[i] + " entra a epoca de celo el " + fecha[0] +
+			td.innerHTML= "Recuerde que " + nombreSplit[i] + " entra a epoca de celo el " + fecha[0] +
 			 ", estar atento a los suplementos necesarios, siendo así, se pronostica nacimiento de la camada para el : " + fechaCamada;
 			tr.appendChild(td);
 			tabla.appendChild(tr);

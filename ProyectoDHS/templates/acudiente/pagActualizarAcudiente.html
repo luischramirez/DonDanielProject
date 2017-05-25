@@ -9,3 +9,16 @@
         <button type="submit" id="boton" > Actualizar </button>
 </form>
 {% endblock %}
+{% block js%}
+<script>
+
+$('#nombre').change(function (){
+    alert("Hola");
+    if (!/^[a-z,A-Z]*$/.test($('#nombre').val())){
+        alert("El nombre solo puede tener caracteres alfabeticos")
+    }
+});
+
+
+    </script>
+{% endblock %}

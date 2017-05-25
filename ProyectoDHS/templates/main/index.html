@@ -81,7 +81,7 @@
 			{% for perro in perros%}
 					{% for iterador in perro.horario_dieta.all %}
 						<tr  class="{{perro.id}}" style='border-style:dashed; border-color:#4d94ff;'>
-							<td> Recuerde que {{perro.nombre}} se alimenta de {{ iterador.id_alimentacion.nombre }} - {{ iterador.id_dia.nombre }} </td>
+							<td><br>Recuerde que {{perro.nombre}} se alimenta de {{ iterador.id_alimentacion.nombre }} - {{ iterador.id_dia.nombre }} </br></td>
 						</tr>
 					{% endfor %}
 			{% endfor %}
