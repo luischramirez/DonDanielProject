@@ -63,12 +63,6 @@
 		if((split[i]) == (mes + 1) || (split[i]) == mes ){
 			var tr = document.createElement("tr");
 			var td = document.createElement("td");
-			var trBtn = document.createElement("tr");
-			var tdBtn = document.createElement("td");
-			var btn = document.createElement("button");
-			btn.setAttribute("class","btn btn-primary " + "ec"+i);
-			btn.setAttribute("onClick","atender('" + "ec"+i + "')");
-			btn.innerHTML = "Atender";
 			tr.setAttribute("class","ec"+i);
 			td.style.border = "dashed";
 			td.style.borderColor= "#4d94ff";
@@ -85,11 +79,8 @@
             var fecha = fechaSplit[i].split("-");
 			td.innerHTML="Recuerde que " + nombreSplit[i] + " entra a epoca de celo el " + fecha[0] +
 			 ", estar atento a los suplementos necesarios, siendo así, se pronostica nacimiento de la camada para el : " + fechaCamada;
-			trBtn.appendChild(tdBtn);
-			tdBtn.appendChild(btn);
 			tr.appendChild(td);
 			tabla.appendChild(tr);
-			tabla.appendChild(trBtn);					
 		}
 	}
 
@@ -151,12 +142,6 @@
 		if((datos[i]) == (mes_actual + 1) || (datos[i]) == mes_actual ){
 			var fila = document.createElement("tr");
 			var col = document.createElement("td");
-			var filaBtn = document.createElement("tr");
-			var colBtn = document.createElement("td");
-			var boton = document.createElement("button");
-			boton.setAttribute("class","btn btn-primary " + "ec"+i);
-			boton.setAttribute("onClick","atender('" + "ec"+i + "')");
-			boton.innerHTML = "Atender";
 			fila.setAttribute("class","ec"+i);
 			col.style.border = "dashed";
 			col.style.borderColor= "#4d94ff";
@@ -165,15 +150,7 @@
 			//alert(fecha_reserva[i]);
 			col.innerHTML="Recuerde que a " + nombrePerro[i] + " se le termina la reserva para " + fecha_final[6] +
 			 " el "+ fecha_final[0]+ " de " + fecha_final[2]+" de "+ fecha_final[4]+".";
-			filaBtn.appendChild(colBtn);
-			colBtn.appendChild(boton);
 			fila.appendChild(col);
 			tabla_reserva.appendChild(fila);
-			tabla_reserva.appendChild(filaBtn);					
 		}
-	}
-
-	//función encargada de atender las notificaciones 
-    function atender(id){
-		$('.'+id+'').remove();	
 	}

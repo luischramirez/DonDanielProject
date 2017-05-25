@@ -47,5 +47,34 @@
                         yearRange: "-100:+0",
                     });
                 });
+            
+            var entrada, salida;
+            function validarFechas(){
+                if(entrada.length > 0 && salida.length > 0){
+                    entrada = entrada.split("/");
+                    salida = salida.split("/");
+
+                    var fechaEntrada = new Date(entrada[2],entrada[1],entrada[0]);
+                    var fechaSalida = new Date(salida[2],salida[1],salida[0]);
+
+                    if (fechaEntrada>fechaSalida) {
+                        alert("La fecha de entrada no puede ser mayor que la fecha de salida.");
+                        $("#fecha_entrada").val("");
+                        $("#fecha_salida").val("");
+                    }
+                }
+            }
+
+            $("#fecha_entrada").change(function(){
+                entrada = $("#fecha_entrada").val();
+                validarFechas();
+            });
+
+            $("#fecha_salida").change(function(){
+                salida = $("#fecha_salida").val();
+                validarFechas();
+            }); 
+
+            
     </script>
 {% endblock %}
