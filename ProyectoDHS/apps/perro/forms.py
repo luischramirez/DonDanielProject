@@ -61,7 +61,7 @@ class FormularioPerro(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
-            'edad': forms.TextInput(attrs={'class':'form-control', 'id':'edad'}),
+            'edad': forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Ej: ##'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en kilogramos'}),
             'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H'}),
             'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
