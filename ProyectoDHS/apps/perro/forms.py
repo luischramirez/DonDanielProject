@@ -61,13 +61,13 @@ class FormularioPerro(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
-            'edad': forms.NumberInput(attrs={'class':'form-control', 'id':'edad'}),
+            'edad': forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Es autocalculada','readonly':'readonly'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en kilogramos'}),
-            'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H'}),
+            'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H (Mayúscula)'}),
             'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
             'estado_salud': forms.TextInput(attrs={'class':'form-control', 'id':'estado_salud','placeholder':'Condiciones en las que se recibe al canino'}),
             'epoca_celo_real': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_real'}),
-            'epoca_celo_aproximada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox'}),
+            'epoca_celo_aproximada': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'epoca_celo_aprox','placeholder':'Es autocalculada','readonly':'readonly'}),
             'condiciones_prestamo': forms.TextInput(attrs={'class':'form-control', 'id':'condiciones_prestamo','placeholder':'Condiciones pautadas con el dueño del canino'}),
             'id_color': forms.Select(attrs={'class':'form-control', 'id':'color'}),
             'id_raza': forms.Select(attrs={'class':'form-control'}),
@@ -104,9 +104,9 @@ class FormularioVeterinario(forms.ModelForm):
         }
         widgets={
             'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
-            'telefono':forms.TextInput(attrs={'class':'form-control', 'id':'telefono','placeholder':'Teléfono'}),
+            'telefono':forms.NumberInput(attrs={'class':'form-control', 'id':'telefono','placeholder':'Teléfono'}),
             'direccion':forms.TextInput(attrs={'class':'form-control', 'id':'dirección','placeholder':'Dirección'}),
-            'email':forms.TextInput(attrs={'class':'form-control', 'id':'email','placeholder':'E-Mail'}),
+            'email':forms.TextInput(attrs={'class':'form-control', 'id':'email','type':'email','placeholder':'E-Mail'}),
         }
 
 class FormularioMadre(forms.ModelForm):
@@ -130,7 +130,7 @@ class FormularioMadre(forms.ModelForm):
         }
         widgets={
             'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
-            'edad':forms.TextInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Edad'}),
+            'edad':forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Edad'}),
             'id_raza':forms.Select(attrs={'class':'form-control', 'id':'id_raza'}),
             'id_color':forms.Select(attrs={'class':'form-control', 'id':'id_color'}),
         }
@@ -156,7 +156,7 @@ class FormularioPadre(forms.ModelForm):
         }
         widgets={
             'nombre':forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
-            'edad':forms.TextInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Edad'}),
+            'edad':forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Edad'}),
             'id_raza':forms.Select(attrs={'class':'form-control', 'id':'id_raza'}),
             'id_color':forms.Select(attrs={'class':'form-control', 'id':'id_color'}),
         }

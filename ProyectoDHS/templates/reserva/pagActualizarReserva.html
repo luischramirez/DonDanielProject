@@ -58,8 +58,7 @@
 
                     if (fechaEntrada>fechaSalida) {
                         alert("La fecha de entrada no puede ser mayor que la fecha de salida.");
-                        $("#fecha_entrada").val("");
-                        $("#fecha_salida").val("");
+                        window.location.reload();
                     }
                 }
             }
