@@ -46,35 +46,37 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="{% url 'main:index'%}">Inicio</a></li>
-					<li class="dropdown">
+					<li class="active table-bordered"><a href="{% url 'main:index'%}">Inicio</a></li>
+					<li class="dropdown active table-bordered">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Acudiente<i class="icon-angle-down"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="{% url 'acudiente:registrar_acudiente'%}">Registrar</a></li>
 							<li><a href="{% url 'acudiente:listar_acudiente'%}">Listar</a></li>
 						</ul>
 					</li>
-					<li class="dropdown">
+					<li class="dropdown active table-bordered">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Perro<i class="icon-angle-down"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="{% url 'perro:registrar_perro'%}">Registrar</a></li>
 							<li><a href="{% url 'perro:listar_perro'%}">Listar</a></li>
 						</ul>
 					</li>
-					<li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown">Reservas<i class="icon-angle-down"></i></a>
+					<li class="dropdown active table-bordered">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">Reserva<i class="icon-angle-down"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="{% url 'reserva:registrar_reserva'%}">Registrar</a></li>
 							<li><a href="{% url 'reserva:listar_reserva'%}">Listar</a></li>
 						</ul>
 					</li>
-					<li class="active"><a href="{% url 'logout' %}">Salir</a></li>
+					<li class="active table-bordered"><a href="{% url 'logout' %}">Salir</a></li>
 				</ul>
 			</div>
 		</div>
 	</header><!--/header-->	
 
 	<div class="notificaciones">
+		<h2><center><strong>Notificaciones</strong></center></h2>
+	</br>
 			<table id="tdieta" >
 			{% block notificaciones %} 
 			{% if perros %}
@@ -102,7 +104,7 @@
 	<div class="pagina">
 	
 		<section id="main-slider" >
-			<img src="../static/img/Presentacion.jpg"
+			<img src="../static/img/Presentacion.jpg" style="width:100%;">
 		</section><!--/#main-slider-->
 
 

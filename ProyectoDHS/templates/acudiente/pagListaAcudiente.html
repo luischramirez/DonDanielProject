@@ -1,22 +1,22 @@
 {% extends 'base/base.html'%}
-{% block tipo_accion %}Lista de acudientes{% endblock %}
+{% block tipo_accion %}<center>Lista de acudientes</center>{% endblock %}
 {% block content %} 
-    <table class="table table-bordered">
+    <table class="table borde_tabla">
     <thead>
-        <tr>
-            <td><strong>#</strong></td>
-            <td><strong>Nombre Completo</strong></td>
-            <td><strong>Dirección</strong></td>
-            <td><strong>Teléfono</strong></td>
-            <td><strong>E-Mail</strong></td>
-            <td><strong>Alias</strong></td>
-            <td><strong>Acciones</strong></td>
+        <tr class="centrado_celda">
+            <td><strong><h3>#</h3></strong></td>
+            <td><strong><h3>Nombre Completo</h3></strong></td>
+            <td><strong><h3>Dirección</h3></strong></td>
+            <td><strong><h3>Teléfono</h3></strong></td>
+            <td><strong><h3>E-Mail</h3></strong></td>
+            <td><strong><h3>Alias</h3></strong></td>
+            <td><strong><h3>Acciones</h3></strong></td>
         </tr>
     </thead>
     <tbody>
         {% if object_list %}
         {% for acudiente in object_list %}
-        <tr>
+        <tr class="centrado_celda">
             <td>{{ acudiente.id }}</td>
             <td>{{ acudiente.nombre }}</td>
             <td>{{ acudiente.direccion }}</td>

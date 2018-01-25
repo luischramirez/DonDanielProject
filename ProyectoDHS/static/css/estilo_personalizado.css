@@ -1,0 +1,17 @@
+/**
+ Estilos personalizados
+*/
+
+.borde_tabla tr,
+.borde_tabla td {
+    border: 1px solid black;
+}
+
+.centrado_celda td
+{
+    text-align: center;
+}
+
+label{
+    font-size: 20px;
+}

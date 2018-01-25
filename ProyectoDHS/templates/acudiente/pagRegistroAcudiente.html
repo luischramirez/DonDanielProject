@@ -1,5 +1,5 @@
 {% extends 'base/base.html'%}
-{% block tipo_accion %}Registro de acudientes{% endblock %}
+{% block tipo_accion %}<center>Registro de acudiente</center>{% endblock %}
 {% block content %} 
 
 <form method='POST'>
@@ -7,7 +7,7 @@
 		<!-- se pinte el formulario como parrafo-->
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" id="boton"> Registrar </button>
+        <center><button type="submit" id="boton" style="font-size:20px"> Registrar </button></center>
 </form>
 {% endblock %}
 {% block js%}

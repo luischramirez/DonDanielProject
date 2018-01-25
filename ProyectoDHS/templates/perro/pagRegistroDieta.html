@@ -1,6 +1,6 @@
 {% extends 'base/base.html'%}
 {% load staticfiles %}
-{% block tipo_accion %}Registro Dieta{% endblock %}
+{% block tipo_accion %}<center>Registro Dieta</center>{% endblock %}
 
 {% block content %} 
     <form method='POST'>
@@ -8,13 +8,15 @@
             <!-- se pinte el formulario como parrafo-->
             {% csrf_token %}
                 {{ form.as_p }}
-            <button type="submit" id="boton"> Registrar </button>
+            <center><button type="submit" id="boton" style="font-size:20px"> Registrar </button></center>
     </form>
 {% endblock %}
 
 {% block js %}
     <script src="{% static 'js/validarRegistroDieta.js'%}"></script>
     <script>
-    $("#alimentacion").after("<button> <a href='{% url 'perro:registrar_alimentacion'%}'> Agregar Nueva Alimentacion </a> </button>");    
+    $("#alimentacion").after("<button id='btnalimentacion'> <a href='{% url 'perro:registrar_alimentacion'%}'> Agregar Nueva Alimentacion </a> </button>");    
+    $("#btnalimentacion").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btnalimentacion").children("a").css('color',"white");
     </script>
 {% endblock %}

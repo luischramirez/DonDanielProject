@@ -11,3 +11,10 @@
             <button type="submit" id="boton"> Registrar </button>
     </form>
 {% endblock %}
+
+{% block js %}
+    <script>    
+        $("#id_ejercicios").children("li").children("label").css('font-size', '14px');
+        event.preventDefault();
+    </script>
+{% endblock %}
