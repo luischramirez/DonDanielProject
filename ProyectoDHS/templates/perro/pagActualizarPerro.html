@@ -13,12 +13,27 @@
 {% block js %}
     <script src="{% static 'js/validarActualizacionPerro.js'%}"></script>
     <script>
-    $("#nivel").after("<button> <a href='{% url 'perro:registrar_nivel_personalizado'%}'> Agregar Nivel Personalizado </a> </button>");
-    $("#veterinario").after("<button> <a href='{% url 'perro:registrar_veterinario'%}'> Agregar Veterinario </a></button>");
-    $("#horario_dieta").after("<button> <a href='{% url 'perro:registrar_dieta'%}'> Agregar Dieta </a> </button>");
-    $("#padre").after("<button> <a href='{% url 'perro:registrar_padre'%}'> Agregar Padre </a> </button>");
-    $("#madre").after("<button> <a href='{% url 'perro:registrar_madre'%}'> Agregar Madre </a> </button>");
-    $("#suplemento").after("<button><a href='{% url 'perro:registrar_suplemento'%}'> Agregar Suplemento </a> </button>");
+    $("#nivel").after("<button id='btnNivel'> <a href='{% url 'perro:registrar_nivel_personalizado'%}'> Agregar Nivel Personalizado </a> </button>");
+    $("#btnNivel").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btnNivel").children("a").css('color',"white");
+    $("#veterinario").after("<button id='btnveterinario'> <a href='{% url 'perro:registrar_veterinario'%}'> Agregar Veterinario </a></button>");
+    $("#btnveterinario").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btnveterinario").children("a").css('color',"white");
+    $("#horario_dieta").after("<button id='btndieta'> <a href='{% url 'perro:registrar_dieta'%}'> Agregar Dieta </a> </button>");
+    $("#btndieta").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btndieta").children("a").css('color',"white");
+    $("#padre").after("<button id='btnpadre'> <a href='{% url 'perro:registrar_padre'%}'> Agregar Padre </a> </button>");
+    $("#btnpadre").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btnpadre").children("a").css('color',"white");
+    $("#madre").after("<button id='btnmadre'> <a href='{% url 'perro:registrar_madre'%}'> Agregar Madre </a> </button>");
+    $("#btnmadre").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btnmadre").children("a").css('color',"white");
+    $("#suplemento").after("<button id='btnsuplemento'><a href='{% url 'perro:registrar_suplemento'%}'> Agregar Suplemento </a> </button>");
+    $("#btnsuplemento").css({'background-color':"#2284E4", 'border-color':"white"});
+    $("#btnsuplemento").children("a").css('color',"white");
+    $("#suplemento").children("li").children("label").css('font-size', '14px');
+    $("#id_vacuna").children("li").children("label").css('font-size', '14px');
+    $("#horario_dieta").children("li").children("label").css('font-size', '14px');
     event.preventDefault();
     </script>
 {% endblock %}
