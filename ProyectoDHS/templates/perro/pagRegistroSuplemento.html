@@ -2,7 +2,9 @@
 
 {% block tipo_accion %}<center>Registro de suplemento</center>{% endblock %}
 
-{% block content %} 
+{% block content %}
+<div style="width:600px; margin-left:467px;">
+    </br> 
     <form method='POST'>
             <!-- token de seguridad obligatorio-->
             <!-- se pinte el formulario como parrafo-->
@@ -10,4 +12,5 @@
                 {{ form.as_p }}
             <center><button type="submit" id="boton" style="font-size:20px"> Registrar </button></center>
     </form>
+</div>
 {% endblock %}

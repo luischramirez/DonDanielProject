@@ -1,6 +1,7 @@
 {%extends 'base/base.html'%}
 
 {% block content %}
+
     <form method='POST'>
         <!-- token de seguridad obligatorio-->
         {% csrf_token %}
@@ -8,4 +9,5 @@
         <button class ="btn btn-danger" type="submit">Si, eliminar</button>
         <a class = "btn btn-default" href="{% url 'acudiente:listar_acudiente' %}">Cancelar</a>
     </form>
+
 {% endblock %}

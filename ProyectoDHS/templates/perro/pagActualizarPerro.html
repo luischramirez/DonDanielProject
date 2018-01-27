@@ -2,13 +2,16 @@
 {% load staticfiles %}
 {% block tipo_accion %}<center>Actualizar datos del perro</center>{% endblock %}
 {% block content %} 
-<form method='POST'>
-        <!-- token de seguridad obligatorio-->
-		<!-- se pinte el formulario como parrafo-->
-        {% csrf_token %}
-        {{ form.as_p }}
-        <center><button type="submit" id="boton" style="font-size:20px" > Actualizar </button></center>
-</form>
+<div style="width:600px; margin-left:467px;">
+    </br>
+    <form method='POST'>
+            <!-- token de seguridad obligatorio-->
+            <!-- se pinte el formulario como parrafo-->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <center><button type="submit" id="boton" style="font-size:20px" > Actualizar </button></center>
+    </form>
+</div>
 {% endblock %}
 {% block js %}
     <script src="{% static 'js/validarActualizacionPerro.js'%}"></script>
