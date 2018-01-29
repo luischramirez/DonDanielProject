@@ -1,7 +1,6 @@
 {%extends 'base/base.html'%}
-
-{% block content %}
-
+{% block tipo_accion %}<center>Eliminar Perro</center>{% endblock %}
+{% block content %} 
     <form method='POST'>
         <!-- token de seguridad obligatorio-->
         {% csrf_token %}
