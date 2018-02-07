@@ -8,6 +8,7 @@
             <td><strong><h3>Tipo de reserva</h3></strong></td>
             <td><strong><h3>Nombre del perro</h3></strong></td>
             <td><strong><h3>Raza del perro</h3></strong></td>
+            <td><strong><h3>Acudiente</h3></strong></td>
             <td><strong><h3>Fecha de entrada</h3></strong></td>
             <td><strong><h3>Fecha de salida</h3></strong></td>
             <td><strong><h3>Tiempo de estadía (días)</h3></strong></td>
@@ -23,6 +24,7 @@
             <td>{{ reserva.tipo_reserva }}</td>
             <td>{{ reserva.perro.nombre }}</td>
             <td>{{ reserva.perro.id_raza.nombre }}</td>
+            <td>{{ reserva.perro.id_acudiente.nombre }}</td>
             <td>{{ reserva.fecha_entrada }}</td>
             <td>{{ reserva.fecha_salida }}</td>
             <td>{{ reserva.tiempo_estadia }}</td>
@@ -30,6 +32,8 @@
             <td>
 			<!-- se coloca un link hacia la url donde se realiza la acción de editar y se manda como parámetro el id del acudiente-->
                 <a class ="btn btn-primary" href="{% url 'reserva:actualizar_reserva' reserva.id%}">Editar</a>
+                </br>
+                </br>
 			<!-- se coloca un link hacia la url donde se realiza la acción de eliminar y se manda como parámetro el id del acudiente-->
                 <a class ="btn btn-danger" href="{% url 'reserva:eliminar_reserva' reserva.id%}">Eliminar</a>
             </td>

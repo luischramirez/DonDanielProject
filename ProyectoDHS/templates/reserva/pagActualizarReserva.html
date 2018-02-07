@@ -75,5 +75,37 @@
                 salida = $("#fecha_salida").val();
                 validarFechas();
             });
+
+            /** Método que calcula la fecha de salida según la fecha de entrada y el tiempo de estadía
+                Params: tiempo de estadia y fecha_entrada
+            */
+            sumaFecha = function(tiempo_estadia, fecha_entrada)
+            {
+                var sep = fecha_entrada.indexOf('/') != -1 ? '/' : '-';
+                var aFecha = fecha_entrada.split(sep);
+                var fecha = aFecha[2]+'/'+aFecha[1]+'/'+aFecha[0];
+                fecha= new Date(fecha);
+                fecha.setDate(fecha.getDate()+parseInt(tiempo_estadia));
+                var anio=fecha.getFullYear();
+                var mes= fecha.getMonth()+1;
+                var dia= fecha.getDate();
+                mes = (mes < 10) ? ("0" + mes) : mes;
+                dia = (dia < 10) ? ("0" + dia) : dia;
+                var fechaFinal = dia+sep+mes+sep+anio;
+                return (fechaFinal);
+            }
+            //cuando el tiempo de estadía cambie, se suma la fecha.
+            $("#tiempo_estadia").change(function(){
+                if($("#fecha_entrada").val()!=""){
+                    var tiempo = $("#tiempo_estadia").val(),
+                    fecha1 = $("#fecha_entrada").val();
+
+                    $("#fecha_salida").val(sumaFecha(tiempo,fecha1)); 
+                }
+                else{
+                    alert("Asegurese de haber llenado el campo de fecha de entrada");
+                    $("#tiempo_estadia").val("");
+                }
+            })
     </script>
 {% endblock %}

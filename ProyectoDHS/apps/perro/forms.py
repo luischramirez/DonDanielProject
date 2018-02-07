@@ -11,6 +11,7 @@ class FormularioPerro(forms.ModelForm):
 
         fields = [
             'nombre',
+            'horario_dieta',
             'fecha_nacimiento',
             'edad',
             'sexo',
@@ -31,10 +32,10 @@ class FormularioPerro(forms.ModelForm):
             'id_tamanio',
             'suplemento',
             'vacuna',
-            'horario_dieta',
         ]
         labels = {
             'nombre': 'Nombre del perro',
+            'horario_dieta': 'Dietas',
             'fecha_nacimiento': 'Fecha nacimiento',
             'edad': 'Edad',
             'sexo': 'Sexo',
@@ -43,7 +44,7 @@ class FormularioPerro(forms.ModelForm):
             'fecha_desparasitacion': 'Fecha de desparasitación',
             'epoca_celo_real': 'Época de celo real',
             'epoca_celo_aproximada': 'Época de celo aproximada',
-            'condiciones_prestamo': 'Condiciones de préstamo',
+            'condiciones_prestamo': 'Observaciones de servicio',
             'id_color': 'Color',
             'id_raza': 'Raza',
             'id_veterinario': 'Veterinario',
@@ -55,11 +56,11 @@ class FormularioPerro(forms.ModelForm):
             'id_tamanio': 'Tamaño',
             'suplemento': 'Suplementos',
             'vacuna': 'Vacunas',
-            'horario_dieta': 'Dietas',
         }
 
         widgets = {
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
+            'horario_dieta': forms.CheckboxSelectMultiple(attrs={'id':'horario_dieta'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
             'edad': forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Es autocalculada','readonly':'readonly'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en kilogramos'}),
@@ -80,7 +81,6 @@ class FormularioPerro(forms.ModelForm):
             'id_tamanio': forms.Select(attrs={'class':'form-control'}),
             'suplemento': forms.CheckboxSelectMultiple(attrs={'id':'suplemento'}),
             'vacuna': forms.CheckboxSelectMultiple(),
-            'horario_dieta': forms.CheckboxSelectMultiple(attrs={'id':'horario_dieta'}),
         }
 
 class FormularioVeterinario(forms.ModelForm):
@@ -218,9 +218,9 @@ class FormularioDieta(forms.ModelForm):
             'tipo_dieta',
         ]
         labels={
-            'id_alimentacion':'Alimentacion',
+            'id_alimentacion':'Alimentación',
             'id_dia':'Dia',
-            'descripcion':'Descripcion de la dieta',
+            'descripcion':'Descripción de la dieta',
             'tipo_dieta':'¿El perro tiene dieta especial?',
         }
         widgets={
