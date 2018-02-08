@@ -1,0 +1,1 @@
+pg_dump.exe -h localhost -p 5432 -U postgres -F c -v -d ProyectoSw3 -f C:\SW3\backup.backup
