@@ -6,7 +6,8 @@
     <thead>
         <tr class="centrado_celda">
             <td><strong><h3>#</h3></strong></td>
-            <td><strong><h3>Nombre</h3></strong></td>
+            <td><strong><h3>Nombre del perro</h3></strong></td>
+            <td><strong><h3>Acudiente del perro</h3></strong></td>
             <td><strong><h3>Fecha de nacimiento</h3></strong></td>
             <td><strong><h3>Edad</h3></strong></td>
             <td><strong><h3>Sexo</h3></strong></td>
@@ -16,7 +17,7 @@
             <td><strong><h3>Fecha desparasitación</h3></strong></td>
             <td><strong><h3>Época de celo real</h3></strong></td>
             <td><strong><h3>Época de celo aproximada</h3></strong></td>
-            <td><strong><h3>Condiciones de préstamo</h3></strong></td>
+            <td><strong><h3>Observaciones de servicio</h3></strong></td>
             <td><strong><h3>Color</h3></strong></td>
             <td><strong><h3>Horario dieta</h3></strong></td>
             <td><strong><h3>Estado perruno</h3></strong></td>
@@ -26,7 +27,6 @@
             <td><strong><h3>Nombre y raza madre</h3></strong></td>
             <td><strong><h3>Nivel de entrenamiento</h3></strong></td>
             <td><strong><h3>Ejercicios adiestramiento</h3></strong></td>
-            <td><strong><h3>Nombre acudiente</h3></strong></td>
             <td><strong><h3>Vacunas</h3></strong></td>
             <td><strong><h3>Suplementos</h3></strong></td>
             <td><strong><h3>Acciones</h3></strong></td>
@@ -38,6 +38,7 @@
         <tr class="centrado_celda">
             <td>{{ perro.id }}</td>
             <td>{{ perro.nombre }}</td>
+            <td>{{ perro.id_acudiente.nombre }}</td>
             <td>{{ perro.fecha_nacimiento }}</td>
             <td>{{ perro.edad }}</td>
             <td>{{ perro.sexo }}</td>
@@ -101,7 +102,6 @@
                  Ninguno
                 {% endif %}
             </td>
-            <td>{{ perro.id_acudiente.nombre }}</td>
             <td>
                 {% if  perro.vacuna.all %}
                 {% for iterador in perro.vacuna.all %}
