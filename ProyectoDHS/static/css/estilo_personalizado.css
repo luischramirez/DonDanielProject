@@ -1,6 +1,14 @@
 /**
  Estilos personalizados
 */
+#contenedor{
+    background-color: black;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
 
 .borde_tabla tr,
 .borde_tabla td {
