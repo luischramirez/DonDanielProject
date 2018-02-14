@@ -1,22 +1,27 @@
 $( function() {
+    
     $("#fecha_nacimiento").change(function(){
-        //edad
+        //cálculo de la edad
         var values = $( "#fecha_nacimiento" ).val().split("/");
         var dia = values[2];
         var mes = values[1];
         var ano = values[0];
         var fecha1 = dia + "-" + mes + "-" + ano;
-
         var fechaNacimiento = new Date(fecha1).getTime();
         var fechaActual     = new Date().getTime();
-
         var diff = fechaActual - fechaNacimiento;
-
         var edad = (diff/(1000*60*60*24)) / 365 ;
 
-        $("#edad").val(Math.floor(edad));
-                
+        if (diff>=0){
+            $("#edad").val(Math.floor(edad));
+        }
+        else{
+            alert ("La fecha de nacimiento no puede ser mayor a la fecha actual");
+            $("#fecha_nacimiento").val("");
+            $("#edad").val("");
+        }
     });
+    
     $("#epoca_celo_real").change(function(){
         // calcular la nueva epoca de celo
         var suma = 6;

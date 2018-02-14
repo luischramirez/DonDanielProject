@@ -328,6 +328,12 @@ button.ui-button::-moz-focus-inner {
 	width: 1.8em;
 	height: 1.8em;
 }
+.ui-datepicker-prev{
+	background-image: url('../img/icons/flecha1.png');
+}
+.ui-datepicker-next{
+	background-image: url('../img/icons/flecha2.png');
+}
 .ui-datepicker .ui-datepicker-prev-hover,
 .ui-datepicker .ui-datepicker-next-hover {
 	top: 1px;
@@ -454,6 +460,7 @@ button.ui-button::-moz-focus-inner {
 	left: 2px;
 	right: auto;
 }
+
 .ui-datepicker-rtl .ui-datepicker-prev:hover {
 	right: 1px;
 	left: auto;

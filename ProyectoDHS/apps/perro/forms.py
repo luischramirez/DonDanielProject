@@ -62,7 +62,7 @@ class FormularioPerro(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class':'form-control', 'id':'nombre','placeholder':'Nombre'}),
             'horario_dieta': forms.CheckboxSelectMultiple(attrs={'id':'horario_dieta'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_nacimiento'}),
-            'edad': forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Es autocalculada','readonly':'readonly'}),
+            'edad': forms.NumberInput(attrs={'class':'form-control', 'id':'edad','placeholder':'Es autocalculada'}),
             'peso': forms.NumberInput(attrs={'class':'form-control','id':'peso','placeholder':'Número del peso en kilogramos'}),
             'sexo': forms.TextInput(attrs={'class':'form-control','id':'sexo','max_length':'1','placeholder':'M o H (Mayúscula)'}),
             'fecha_desparasitacion': forms.DateInput(attrs={'class':'datepicker form-control', 'id':'fecha_desparasitacion'}),
