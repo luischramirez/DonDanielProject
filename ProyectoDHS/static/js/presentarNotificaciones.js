@@ -1,11 +1,17 @@
-    var dia = new Date(),
+ /**
+  * Archivo donde se muestran las notificaciones desde la parte de la presentación (templates)
+  */ 
+  	$("#tdieta").show();	
+ 	var dia = new Date(),
     hora = dia.getHours(),
     minuto = dia.getMinutes();
-    //se valida la hora en que debería mostrar las dietas (entre las 10 am - 12 pm y entre las 4 y 6 pm)
-	if ((hora<10) || (hora>12 && hora<16) || (hora>18)){
+    //se valida la hora en que debería mostrar las dietas (entre las 8 am - 12 pm y entre las 2 y 6 pm)
+	if ((hora<8) || (hora>12 && hora<14) || (hora>18)){
 		$("#tdieta").hide();	
 	}
-	// EPOCAS DE CELO
+	
+	//-----------------------------------------------------------------------------------------------------------------------------------------------------
+	// EPOCAS DE CELO -> un mes antes o el mismo mes, envío la notificación.
 	var parrafoEpoca = document.getElementById("epocacelo").innerHTML;
 	//Mes
 	var split = parrafoEpoca.split(";");
@@ -54,7 +60,7 @@
 		anio[i] = arreglo[4];
 				
 	}
-
+	//tabla donde se mostrarán las notificaciones referentes a la epoca de celo
 	var tabla = document.getElementById("tepocacelo");
     //mes actual
 	mes = dia.getMonth() + 1;
@@ -86,8 +92,7 @@
 
 	
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-	//FECHAS DE RESERVA
-
+	//FECHAS DE RESERVA->un mes antes o el mismo mes, envío la notificación
 	var parrafoFechaReserva = document.getElementById("fechareserva").innerHTML;
 	//Mes
 	var datos = parrafoFechaReserva.split(";");

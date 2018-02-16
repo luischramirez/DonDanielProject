@@ -215,21 +215,17 @@ class FormularioDieta(forms.ModelForm):
             'id_alimentacion',
             'id_dia',
             'descripcion',
-            'tipo_dieta',
         ]
         labels={
             'id_alimentacion':'Alimentación',
             'id_dia':'Dia',
             'descripcion':'Descripción de la dieta',
-            'tipo_dieta':'¿El perro tiene dieta especial?',
         }
         widgets={
-            'id_alimentacion':forms.Select(attrs={'class':'form-control', 'id':'alimentacion'}),
-            'id_dia':forms.Select(attrs={'class':'form-control', 'id':'dia'}),
-            'descripcion':forms.TextInput(attrs={'placeholder':'Coloque aquí: dieta - nombre del perro', 'class':'form-control'}),
-            'tipo_dieta':forms.TextInput(attrs={'placeholder':'Coloque aquí: Si o No', 'id':'tipo_dieta','class':'form-control'}),
+            'id_alimentacion':forms.Select(attrs={'class':'form-control', 'id':'alimentacion','name':'alimentacion'}),
+            'id_dia':forms.Select(attrs={'class':'form-control', 'id':'dia','name':'alimentacion'}),
+            'descripcion':forms.TextInput(attrs={'placeholder':'Descripción generada de la dieta','id':'descripcion_d', 'class':'form-control'}),
         }
-
 class FormularioAlimentacion(forms.ModelForm):
     """
     Clase encargada de describir el formulario para gestionar la dieta de un perro

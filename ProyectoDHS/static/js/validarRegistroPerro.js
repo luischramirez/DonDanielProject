@@ -1,16 +1,41 @@
+ 
+ 
+ /**
+  * Función para validar el campo de sexo del registro de perro
+  */
  $( function() {
     $("#sexo").change(function(){
         var sexo = $("#sexo").val();
         if(sexo=='M'){
-            var label1 = document.getElementsByTagName("label")[7];
-            var label2 = document.getElementsByTagName("label")[8];
+            //se obtiene todos los labels del documento
+            //label1 -> epoca celo real, label 2-> epoca celo aproximada
+            var label1,label2,
+            labels = document.getElementsByTagName('label');
+
+            for (var i = 0; i < labels.length; i++) {
+                //verifico que sean los labels que necesito esconder
+                if (labels[i].htmlFor == 'epoca_celo_real') {
+                    label1 = labels[i];
+                }else if(labels[i].htmlFor == 'epoca_celo_aprox'){
+                    label2 = labels[i];
+                }
+            }
             label1.setAttribute("class","hidden");
             label2.setAttribute("class","hidden");
             $("#epoca_celo_real").hide();
             $("#epoca_celo_aprox").hide();
         }else if(sexo=='H'){
-            var label1 = document.getElementsByTagName("label")[7];
-            var label2 = document.getElementsByTagName("label")[8];
+            var label1,label2,
+            labels = document.getElementsByTagName('label');
+
+            for (var i = 0; i < labels.length; i++) {
+                //verifico que sean los labels que necesito esconder
+                if (labels[i].htmlFor == 'epoca_celo_real') {
+                    label1 = labels[i];
+                }else if(labels[i].htmlFor == 'epoca_celo_aprox'){
+                    label2 = labels[i];
+                }
+            }
             label1.setAttribute("class","");
             label2.setAttribute("class","");
             $("#epoca_celo_real").show();
@@ -22,6 +47,8 @@
         }
 
     });
+
+
     //configuracion español datepicker
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
@@ -60,6 +87,9 @@
             });
         });
            
+    /**
+     * Función para calcular la edad con la fecha de nacimiento
+     */    
     $("#fecha_nacimiento").change(function(){
         //cálculo de la edad
         var values = $( "#fecha_nacimiento" ).val().split("/");
@@ -82,6 +112,9 @@
         }
     });
 
+    /**
+     * Función para calcular la epoca de celo aproximada según la época de celo real
+     */ 
     $("#epoca_celo_real").change(function(){
         // calcular la nueva epoca de celo
         var suma = 6;
