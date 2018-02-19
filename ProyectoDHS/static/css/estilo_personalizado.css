@@ -1,6 +1,20 @@
 /**
  Archivo donde se crean estilos personalizados CSS
 */
+.boton_personalizado{
+    text-decoration: none;
+    padding: 5px;
+    color: #ffffff;
+    background-color: #2284E4;
+    border: 1px solid white;
+}
+.boton_personalizado:hover{
+    text-decoration: none;
+    padding: 5px;
+    color: #ffffff;
+    background-color: #2284E4;
+    border: 1px solid white;
+}
 #contenedor{
     background-color: black;
 }
