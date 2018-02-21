@@ -1,9 +1,15 @@
+    /**
+     * Función para llenar automáticamente el campo de descripción de la dieta
+     */
+    $("#dia").change(function(){
 
-    $("#tipo_dieta").change(function(){
-        //validacion de Si y No
-        var texto = $( "#tipo_dieta" ).val();
-        if (texto.toLowerCase() != 'si' && texto.toLowerCase() != 'no'){
-            alert("Recuerde que solo puede escribir si y no en este campo");
-            $( "#tipo_dieta" ).val(" ");
+        if($("#alimentacion").val()!=""){
+            var texto = $("#alimentacion option:selected").text() + " - " + $("#dia option:selected").text();
+            $("#descripcion_d").val(texto);
         }
+        else{
+            alert("Porfavor ingrese primero la alimentación de la dieta");
+            $("#dia").val("");
+        }
+        
     });

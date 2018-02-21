@@ -5,7 +5,6 @@
     <table class="table borde_tabla">
     <thead>
         <tr class="centrado_celda">
-            <td><strong><h3>#</h3></strong></td>
             <td><strong><h3>Nombre del perro</h3></strong></td>
             <td><strong><h3>Acudiente del perro</h3></strong></td>
             <td><strong><h3>Fecha de nacimiento</h3></strong></td>
@@ -36,7 +35,6 @@
         {% if object_list %}
         {% for perro in object_list %}
         <tr class="centrado_celda">
-            <td>{{ perro.id }}</td>
             <td>{{ perro.nombre }}</td>
             <td>{{ perro.id_acudiente.nombre }}</td>
             <td>{{ perro.fecha_nacimiento }}</td>

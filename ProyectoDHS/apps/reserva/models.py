@@ -90,7 +90,6 @@ class HorarioDieta(models.Model):
     id_alimentacion = models.ForeignKey(Alimentacion, models.DO_NOTHING, db_column='id_alimentacion')
     id_dia = models.ForeignKey(Dia, models.DO_NOTHING, db_column='id_dia')
     descripcion = models.TextField()
-    tipo_dieta = models.TextField()
 
     def __str__(self):
         return self.descripcion

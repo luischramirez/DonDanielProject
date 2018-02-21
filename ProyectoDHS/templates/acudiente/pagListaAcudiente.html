@@ -4,7 +4,6 @@
     <table class="table borde_tabla">
     <thead>
         <tr class="centrado_celda">
-            <td><strong><h3>#</h3></strong></td>
             <td><strong><h3>Nombre Completo</h3></strong></td>
             <td><strong><h3>Dirección</h3></strong></td>
             <td><strong><h3>Teléfono</h3></strong></td>
@@ -17,7 +16,6 @@
         {% if object_list %}
         {% for acudiente in object_list %}
         <tr class="centrado_celda">
-            <td>{{ acudiente.id }}</td>
             <td>{{ acudiente.nombre }}</td>
             <td>{{ acudiente.direccion }}</td>
             <td>{{ acudiente.telefono }}</td>

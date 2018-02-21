@@ -1,14 +1,21 @@
 {% extends 'base/base.html'%}
-
+{% load staticfiles %}
 {% block navbar%}
 {% endblock %}
 
 {% block content%}
 </br>
 </br>
+<span id="imagen" >
+    <img src="{% static 'img/huellita.png'%}" style="width:100px; height:100px; margin-left: 710px">
+</span>
+</br>
 </br>
 <div id="login" style="border:2px solid grey; border-radius:5px; width:600px; height:337px; margin-left:467px; margin-top: 8px; margin-bottom: 5px;">
     <form method="post">
+        {% if flag %}
+            <script> alert ("Usuario o contraseña incorrectos"); </script>
+        {% endif %}
         <h2><center><strong>Inicio de sesión</strong></center></h2>
         </br>
         </br>

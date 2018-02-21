@@ -1,22 +1,31 @@
 $( function() {
+    /**
+     * Función para calcular la edad con la fecha de nacimiento
+     */     
     $("#fecha_nacimiento").change(function(){
-        //edad
+        //cálculo de la edad
         var values = $( "#fecha_nacimiento" ).val().split("/");
         var dia = values[2];
         var mes = values[1];
         var ano = values[0];
         var fecha1 = dia + "-" + mes + "-" + ano;
-
         var fechaNacimiento = new Date(fecha1).getTime();
         var fechaActual     = new Date().getTime();
-
         var diff = fechaActual - fechaNacimiento;
-
         var edad = (diff/(1000*60*60*24)) / 365 ;
 
-        $("#edad").val(Math.floor(edad));
-                
+        if (diff>=0){
+            $("#edad").val(Math.floor(edad));
+        }
+        else{
+            alert ("La fecha de nacimiento no puede ser mayor a la fecha actual");
+            $("#fecha_nacimiento").val("");
+            $("#edad").val("");
+        }
     });
+    /**
+     * Función para calcular la epoca de celo aproximada según la época de celo real
+     */ 
     $("#epoca_celo_real").change(function(){
         // calcular la nueva epoca de celo
         var suma = 6;
@@ -34,19 +43,40 @@ $( function() {
         $("#epoca_celo_aprox").val(fechaNueva);
     });
             
+    /**
+     * Validación del campo de texto Sexo
+    */
     //se verifica que sexo tiene actualmente
     var verificarSexo =$("#sexo").val();
     //se ocultan campos
     if (verificarSexo=='M'){
-        var label1 = document.getElementsByTagName("label")[7];
-        var label2 = document.getElementsByTagName("label")[8];
+        var label1,label2,
+        labels = document.getElementsByTagName('label');
+
+        for (var i = 0; i < labels.length; i++) {
+            //verifico que sean los labels que necesito esconder
+            if (labels[i].htmlFor == 'epoca_celo_real') {
+                label1 = labels[i];
+            }else if(labels[i].htmlFor == 'epoca_celo_aprox'){
+                label2 = labels[i];
+            }
+        }
         label1.setAttribute("class","hidden");
         label2.setAttribute("class","hidden");
         $("#epoca_celo_real").hide();
         $("#epoca_celo_aprox").hide();
     }else if(sexo=='H'){
-        var label1 = document.getElementsByTagName("label")[7];
-        var label2 = document.getElementsByTagName("label")[8];
+        var label1,label2,
+        labels = document.getElementsByTagName('label');
+
+        for (var i = 0; i < labels.length; i++) {
+            //verifico que sean los labels que necesito esconder
+            if (labels[i].htmlFor == 'epoca_celo_real') {
+                label1 = labels[i];
+            }else if(labels[i].htmlFor == 'epoca_celo_aprox'){
+                label2 = labels[i];
+            }
+        }
         label1.setAttribute("class","");
         label2.setAttribute("class","");
         $("#epoca_celo_real").show();
@@ -56,15 +86,33 @@ $( function() {
     $("#sexo").change(function(){
         var sexo = $("#sexo").val();
         if(sexo=='M'){
-            var label1 = document.getElementsByTagName("label")[7];
-            var label2 = document.getElementsByTagName("label")[8];
+            var label1,label2,
+            labels = document.getElementsByTagName('label');
+
+            for (var i = 0; i < labels.length; i++) {
+                //verifico que sean los labels que necesito esconder
+                if (labels[i].htmlFor == 'epoca_celo_real') {
+                    label1 = labels[i];
+                }else if(labels[i].htmlFor == 'epoca_celo_aprox'){
+                    label2 = labels[i];
+                }
+            }
             label1.setAttribute("class","hidden");
             label2.setAttribute("class","hidden");
             $("#epoca_celo_real").hide();
             $("#epoca_celo_aprox").hide();
         }else if(sexo=='H'){
-            var label1 = document.getElementsByTagName("label")[7];
-            var label2 = document.getElementsByTagName("label")[8];
+            var label1,label2,
+            labels = document.getElementsByTagName('label');
+
+            for (var i = 0; i < labels.length; i++) {
+                //verifico que sean los labels que necesito esconder
+                if (labels[i].htmlFor == 'epoca_celo_real') {
+                    label1 = labels[i];
+                }else if(labels[i].htmlFor == 'epoca_celo_aprox'){
+                    label2 = labels[i];
+                }
+            }
             label1.setAttribute("class","");
             label2.setAttribute("class","");
             $("#epoca_celo_real").show();
@@ -74,6 +122,7 @@ $( function() {
             alert("Porfavor ingrese M o H en el campo sexo");
         }
     });
+    
     //configuracion español datepicker
     $.datepicker.regional['es'] = {
         closeText: 'Cerrar',

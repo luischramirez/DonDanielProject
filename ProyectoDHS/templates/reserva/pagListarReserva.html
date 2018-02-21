@@ -4,7 +4,6 @@
     <table class="table borde_tabla">
     <thead>
         <tr class="centrado_celda">
-            <td><strong><h3>#</h3></strong></td>
             <td><strong><h3>Tipo de reserva</h3></strong></td>
             <td><strong><h3>Nombre del perro</h3></strong></td>
             <td><strong><h3>Raza del perro</h3></strong></td>
@@ -20,7 +19,6 @@
         {% if object_list %}
         {% for reserva in object_list %}
         <tr class="centrado_celda">
-            <td>{{ reserva.id }}</td>
             <td>{{ reserva.tipo_reserva }}</td>
             <td>{{ reserva.perro.nombre }}</td>
             <td>{{ reserva.perro.id_raza.nombre }}</td>
