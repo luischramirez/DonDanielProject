@@ -11,7 +11,7 @@ class Acudiente(models.Model):
     alias = models.TextField(blank=True, null=True)
     def __str__(self):
         return self.nombre
-
+    
     class Meta:
         managed = False
         db_table = "Acudiente"

@@ -19,7 +19,7 @@
 {% block js %}
     <script src="{% static 'js/validarRegistroDieta.js'%}"></script>
     <script>
-    $("#alimentacion").after("<a class='boton_personalizado' href='{% url 'perro:registrar_alimentacion'%}'> Agregar Nueva Alimentacion </a>");    
+    $("#alimentacion").after("<a class='boton_personalizado' href='{% url 'perro:registrar_alimentacion' %}'> Agregar Nueva Alimentacion </a>");    
     $("#btnalimentacion").children("a").css('color',"white");
     </script>
 {% endblock %}

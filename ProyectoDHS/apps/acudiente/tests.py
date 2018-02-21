@@ -9,21 +9,15 @@ class AcudienteTestCase(TestCase):
     """
     def setUp(self):
         """
-        Función encargada de setear los variables necesarios para realizar las pruebas
+        Función encargada de establecer los datos necesarios para realizar las pruebas
         """
-
-        #sys.path
+        #pylint: disable=E1101
         Acudiente.objects.create(nombre='Fernando', direccion='barrio ciudad dorada', telefono='1234', email='fer@gmail.com', alias='Fer')
-
-        Acudiente.objects.create(nombre='Fernando',direccion="barrio ciudad dorada", telefono="7357490",email="fer@gmail.com", alias="fer")
-
-
 
     def test_verificar_registro_acudiente(self):
         """
         Función encargada de verificar si se registró correctamente el acudiente
         """
+        #pylint: disable=E1101
         acudiente1 = Acudiente.objects.get(nombre='Fernando')
-
-        acudiente1 = Acudiente.objects.get(nombre="Fernando")
         self.assertTrue(acudiente1)
