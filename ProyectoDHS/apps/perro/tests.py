@@ -27,3 +27,29 @@ class PerroTestCase(TestCase):
         #pylint: disable=E1101
         perro1 = Perro.objects.get(nombre='toby')
         self.assertTrue(perro1)
+
+    def test_verificar_eliminado_perro(self):
+        """
+        Función encargada de verificar si se elimina correctamente un perro
+        """
+        #pylint: disable=E1101
+        perro1 = Perro.objects.get(nombre='toby')
+        perro1.delete()
+        self.assertFalse(Perro.objects.get(nombre='Toby'))    
+
+    def test_verificar_actualizacion_perro(self):
+        """
+        Función encargada de verificar si se actualizan correctamente los datos del perro
+        """
+        #pylint: disable=E1101
+        perro1 = Perro.objects.get(nombre='toby')
+        perro1.nombre='Lucas'
+        self.assertEqual('Lucas',perro1.nombre)
+    
+    def test_verificar_consulta_perro(self):
+        """
+        Función encargada de verificar si se consulta correctamente los datos del perro
+        """
+        #pylint: disable=E1101
+        perro1 = Perro.objects.all()
+        self.assertTrue(perro1)
