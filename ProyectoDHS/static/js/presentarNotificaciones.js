@@ -7,6 +7,7 @@
     minuto = dia.getMinutes();
     //se valida la hora en que debería mostrar las dietas (entre las 8 am - 12 pm y entre las 2 y 6 pm)
 	if ((hora<8) || (hora>12 && hora<14) || (hora>18)){
+		//se esconde el contenedor
 		$("#tdieta").hide();	
 	}
 	
