@@ -13,11 +13,11 @@ class PerroTestCase(TestCase):
 
         #sys.path
         #pylint: disable=E1101
-        Perro.objects.create(nombre='toby', fecha_nacimiento='17/02/2010',
-        edad='8', sexo='M', peso='10',estado_salud='sano',fecha_desparasitacion='',
-        epoca_celo_aproximada='', epoca_celo_real='',condiciones_prestamo='',id_color='1',
-        id_raza='10',id_veterinario='', id_nivel_entrenamiento='1', id_padre='',id_madre='',
-        id_estado_perruno='2',id_acudiente='1', id_tamanio='1',suplemento='',vacuna='',horario_dieta='1')
+        Perro.objects.create(nombre='Sasha', fecha_nacimiento='2010-02-17',
+        edad='8', sexo='H', peso='10',estado_salud='sana',fecha_desparasitacion='2017-06-20',
+        epoca_celo_aproximada='2018-02-17', epoca_celo_real='2017-08-17',condiciones_prestamo='',id_color=1,
+        id_raza=3,id_veterinario=None, id_nivel_entrenamiento=2, id_padre=None,id_madre=None,
+        id_estado_perruno=1,id_acudiente=1, id_tamanio=1)
 
 
     def test_verificar_registro_perro(self):
@@ -25,7 +25,7 @@ class PerroTestCase(TestCase):
         Función encargada de verificar si se registró correctamente el perro
         """
         #pylint: disable=E1101
-        perro1 = Perro.objects.get(nombre='toby')
+        perro1 = Perro.objects.get(nombre='Sasha')
         self.assertTrue(perro1)
 
     def test_verificar_eliminado_perro(self):
@@ -33,18 +33,18 @@ class PerroTestCase(TestCase):
         Función encargada de verificar si se elimina correctamente un perro
         """
         #pylint: disable=E1101
-        perro1 = Perro.objects.get(nombre='toby')
+        perro1 = Perro.objects.get(nombre='Sasha')
         perro1.delete()
-        self.assertFalse(Perro.objects.get(nombre='Toby'))    
+        self.assertFalse(Perro.objects.get(nombre='Sasha'))    
 
     def test_verificar_actualizacion_perro(self):
         """
         Función encargada de verificar si se actualizan correctamente los datos del perro
         """
         #pylint: disable=E1101
-        perro1 = Perro.objects.get(nombre='toby')
-        perro1.nombre='Lucas'
-        self.assertEqual('Lucas',perro1.nombre)
+        perro1 = Perro.objects.get(nombre='Sasha')
+        perro1.nombre='Niña'
+        self.assertEqual('Niña',perro1.nombre)
     
     def test_verificar_consulta_perro(self):
         """

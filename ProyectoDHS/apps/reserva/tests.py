@@ -13,14 +13,14 @@ class ReservaTestCase(TestCase):
         Función encargada de establecer los datos necesarios para realizar las pruebas
         """
         #pylint: disable=E1101
-        Reserva.objects.create(tipo_reserva='Guarderia', fecha_entrada='10/02/2018', fecha_salida='10/03/2018', tiempo_estadia='27', precio_aproximado='300000',perro='Kira')
+        Reserva.objects.create(tipo_reserva='Adiestramiento', fecha_entrada='10/02/2018', fecha_salida='10/03/2018', tiempo_estadia='27', precio_aproximado='300000',perro='Bruno')
 
     def test_verificar_registro_reserva(self):
         """
         Función encargada de verificar si se registró correctamente la reserva
         """
         #pylint: disable=E1101
-        reserva1 = Reserva.objects.get(perro='Kira')
+        reserva1 = Reserva.objects.get(perro='Bruno')
         self.assertTrue(reserva1)
 
     def test_verificar_eliminado_reserva(self):
@@ -28,18 +28,18 @@ class ReservaTestCase(TestCase):
         Función encargada de verificar si se elimina correctamente una reserva
         """
         #pylint: disable=E1101
-        reserva1 = Reserva.objects.get(perro='Kira')
+        reserva1 = Reserva.objects.get(perro='Bruno')
         reserva1.delete()
-        self.assertFalse(Reserva.objects.get(perro='Kira'))    
+        self.assertFalse(Reserva.objects.get(perro='Bruno'))    
 
     def test_verificar_actualizacion_reserva(self):
         """
         Función encargada de verificar si se actualizan correctamente los datos de la reserva
         """
         #pylint: disable=E1101
-        reserva1 = Reserva.objects.get(perro='Kira')
-        reserva1.tipo_reserva='Adiestramiento'
-        self.assertEqual('Adiestramiento',reserva1.tipo_reserva)
+        reserva1 = Reserva.objects.get(perro='Bruno')
+        reserva1.precio_aproximado='475600'
+        self.assertEqual('475600',reserva1.precio_aproximado)
     
     def test_verificar_consulta_reserva(self):
         """
