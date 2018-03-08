@@ -5,13 +5,13 @@ from email.mime.base import MIMEBase
 from email.encoders import encode_base64
 
 print("**** Enviar email con Gmail ***")
-
+"""
 user = input("Cuenta de gmail:")
 password = getpass.getpass("Password: ")
 """
-user = "@gmail.com"
-password = ""
-"""
+user = "lchajo115@gmail.com"
+password = "Pa$$w0rdorsurus"
+
 
 #Para la cabecera del email
 remitente = "Admin <lchajo115@gmail.com>"
