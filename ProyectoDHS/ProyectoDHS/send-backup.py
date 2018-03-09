@@ -5,17 +5,14 @@ from email.mime.base import MIMEBase
 from email.encoders import encode_base64
 
 print("**** Enviar email con Gmail ***")
-"""
-user = input("Cuenta de gmail:")
-password = getpass.getpass("Password: ")
-"""
-user = "lchajo115@gmail.com"
-password = "Pa$$w0rdorsurus"
+
+user = "serviciosDHS@gmail.com"
+password = "Servici0sDHS"
 
 
 #Para la cabecera del email
-remitente = "Admin <lchajo115@gmail.com>"
-destinatario = "Luis <ldchavezr@uqvirtual.edu.co>"
+remitente = "Administrador <serviciosDHS@gmail.com>"
+destinatario = "Servicios DHS <serviciosDHS@gmail.com>"
 asunto = "Envío de Backup de la aplicación DHS"
 mensaje = "<h1> Este correo contiene el Backup generado por la aplicación del Centro Canino de Servicios Integrales DHS</h1> "
 archivo = "C:\SW3\BackupDHS.backup"
