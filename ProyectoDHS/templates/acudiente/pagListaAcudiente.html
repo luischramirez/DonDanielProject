@@ -19,8 +19,17 @@
             <td>{{ acudiente.nombre }}</td>
             <td>{{ acudiente.direccion }}</td>
             <td>{{ acudiente.telefono }}</td>
-            <td>{{ acudiente.email }}</td>
-            <td>{{ acudiente.alias }}</td>
+            {% if acudiente.email %}
+                <td>{{ acudiente.email }}</td>
+            {% else %}
+                <td> Desconocido </td>
+            {% endif %}
+
+            {% if acudiente.alias %}
+                <td>{{ acudiente.alias }}</td>
+            {% else %}
+                <td> No definido </td>
+            {% endif %}
             <td>
 			<!-- se coloca un link hacia la url donde se realiza la acción de editar y se manda como parámetro el id del acudiente-->
                 <a class ="btn btn-primary" href="{% url 'acudiente:actualizar_acudiente' acudiente.id%}">Editar</a>
